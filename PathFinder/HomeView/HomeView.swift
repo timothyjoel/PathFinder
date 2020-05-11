@@ -15,21 +15,21 @@ class HomeView: UIView {
     
     // MARK: - Properties
     
-    var infoLabel = Label(text: "Set locaction of two points on the map to check the distance between them", font: .systemFont(ofSize: 17, weight: .semibold), textColor: .yellow)
+    var infoLabel = Label(text: "Set location of two points on the map to check the distance between them", font: .systemFont(ofSize: 17, weight: .semibold), textColor: .white)
     
     private var mainStack = Stack(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 0)
     
     private var stack1 = Stack(axis: .vertical, distribution: .fill, alignment: .leading, spacing: 0)
-    private var location1Label = Label(text: "Location1", font: .systemFont(ofSize: 17, weight: .regular), textColor: .systemGreen)
+    private var location1Label = Label(text: "Location1", font: .systemFont(ofSize: 17, weight: .bold), textColor: .white)
     var lat1Textfield = SkyTextfield(placeholder: "latitude", mainColor: .white, title: "Latitude")
     var lon1Textfield = SkyTextfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
     
     private var stack2 = Stack(axis: .vertical, distribution: .fill, alignment: .leading, spacing: 0)
-    private var location2Label = Label(text: "Location2", font: .systemFont(ofSize: 17, weight: .regular), textColor: .systemGreen)
+    private var location2Label = Label(text: "Location2", font: .systemFont(ofSize: 17, weight: .bold), textColor: .white)
     var lat2Textfield = SkyTextfield(placeholder: "latitude", mainColor: .white, title: "Latitude")
     var lon2Textfield = SkyTextfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
     
-    var resultLabel = Label(text: "Result", font: .systemFont(ofSize: 17, weight: .regular), textColor: .systemGreen)
+    var resultLabel = Label(text: "Result", font: .systemFont(ofSize: 17, weight: .regular), textColor: .white)
     
     var getDistanceButton: UIButton = {
         let button = UIButton()
@@ -108,6 +108,9 @@ class HomeView: UIView {
             make.bottom.leading.trailing.equalToSuperview()
         }
         mapView.layer.cornerRadius = 16
+        mapView.layer.shadowOffset = CGSize(width: 4, height: 4)
+        mapView.layer.shadowColor = UIColor.black.cgColor
+        mapView.layer.shadowRadius = 4
         
         super.updateConstraints()
     }
