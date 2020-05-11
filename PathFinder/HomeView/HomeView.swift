@@ -21,13 +21,13 @@ class HomeView: UIView {
     
     private var stack1 = Stack(axis: .vertical, distribution: .fill, alignment: .leading, spacing: 0)
     private var location1Label = Label(text: "Location1", font: .systemFont(ofSize: 17, weight: .regular), textColor: .systemGreen)
-    var lat1Textfield = LocationTextfield(placeholder: "latitude...")
-    var lon1Textfield = LocationTextfield(placeholder: "longitude...")
+    var lat1Textfield = SkyTextfield(placeholder: "latitude", mainColor: .white, title: "Latitude")
+    var lon1Textfield = SkyTextfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
     
     private var stack2 = Stack(axis: .vertical, distribution: .fill, alignment: .leading, spacing: 0)
     private var location2Label = Label(text: "Location2", font: .systemFont(ofSize: 17, weight: .regular), textColor: .systemGreen)
-    var lat2Textfield = LocationTextfield(placeholder: "latitude...")
-    var lon2Textfield = LocationTextfield(placeholder: "longitude...")
+    var lat2Textfield = SkyTextfield(placeholder: "latitude", mainColor: .white, title: "Latitude")
+    var lon2Textfield = SkyTextfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
     
     var resultLabel = Label(text: "Result", font: .systemFont(ofSize: 17, weight: .regular), textColor: .systemGreen)
     
@@ -55,7 +55,7 @@ class HomeView: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .red
+      //  backgroundColor = .red
         addViews()
     }
     
