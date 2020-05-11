@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		642B6EBDF44107F49FE3CFA4 /* Pods_PathFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6902F817A14DC0B1B59212FE /* Pods_PathFinderTests.framework */; };
+		814E738B2469C5BB00EE4028 /* Ext-UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814E738A2469C5BB00EE4028 /* Ext-UIColor.swift */; };
 		81778A322469A88200C01340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A312469A88200C01340 /* AppDelegate.swift */; };
 		81778A342469A88200C01340 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A332469A88200C01340 /* SceneDelegate.swift */; };
 		81778A362469A88200C01340 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A352469A88200C01340 /* HomeViewController.swift */; };
@@ -47,6 +48,7 @@
 		1203E1FA31C028003D2EC63D /* Pods-PathFinder-PathFinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PathFinder-PathFinderUITests.debug.xcconfig"; path = "Target Support Files/Pods-PathFinder-PathFinderUITests/Pods-PathFinder-PathFinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		42293CD4C6D08B0793C596A2 /* Pods_PathFinder_PathFinderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PathFinder_PathFinderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6902F817A14DC0B1B59212FE /* Pods_PathFinderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PathFinderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		814E738A2469C5BB00EE4028 /* Ext-UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-UIColor.swift"; sourceTree = "<group>"; };
 		81778A2E2469A88200C01340 /* PathFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81778A312469A88200C01340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81778A332469A88200C01340 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				81778A672469B28B00C01340 /* Ext-UIView.swift */,
 				81778A692469B3A200C01340 /* Ext-UIStackView.swift */,
+				814E738A2469C5BB00EE4028 /* Ext-UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				81778A6A2469B3A200C01340 /* Ext-UIStackView.swift in Sources */,
 				81778A632469AD0E00C01340 /* HomeView.swift in Sources */,
 				81778A322469A88200C01340 /* AppDelegate.swift in Sources */,
+				814E738B2469C5BB00EE4028 /* Ext-UIColor.swift in Sources */,
 				81778A342469A88200C01340 /* SceneDelegate.swift in Sources */,
 				81778A652469AFDE00C01340 /* SkyTextfield.swift in Sources */,
 			);
