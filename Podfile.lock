@@ -1,0 +1,20 @@
+PODS:
+  - SkyFloatingLabelTextField (3.8.0)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - SkyFloatingLabelTextField (~> 3.0)
+  - SnapKit (~> 5.0.0)
+
+SPEC REPOS:
+  trunk:
+    - SkyFloatingLabelTextField
+    - SnapKit
+
+SPEC CHECKSUMS:
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 90b65bed509097cfe2a7388db388100d39ff915c
+
+COCOAPODS: 1.8.4
