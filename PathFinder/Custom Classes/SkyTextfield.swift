@@ -12,7 +12,7 @@ class SkyTextfield: SkyFloatingLabelTextField {
     
     init(placeholder: String = "", mainColor: UIColor = .white, title: String = "") {
         super.init(frame: .zero)
-        self.placeholderColor = .systemGray4
+        self.placeholderColor = mainColor.withAlphaComponent(0.2)
         self.textColor = mainColor
         self.placeholder = placeholder
         self.errorColor = .systemRed
@@ -22,6 +22,8 @@ class SkyTextfield: SkyFloatingLabelTextField {
         self.selectedTitleColor = mainColor
         self.selectedLineHeight = 1
         self.lineHeight = 1
+        self.title = title
+        self.selectedTitle = title
     }
     
     required init?(coder aDecoder: NSCoder) {

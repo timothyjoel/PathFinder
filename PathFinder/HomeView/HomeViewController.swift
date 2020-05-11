@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-//import AVFoundation
 
 class HomeViewController: UIViewController {
     
@@ -21,6 +20,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        homeView.getDistanceButton.addTarget(self, action: #selector(getDistanceButtonTapped), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
         setGradientBackground(colorTop: hexStringToUIColor(hex: "2e6eff"), colorBottom: hexStringToUIColor(hex: "003dc7"))
     }
     
-    @objc fileprivate func getDirectionButtonTapped() {
-        
+    @objc func getDistanceButtonTapped() {
+        print("Tapped")
     }
     
     @objc fileprivate func startStopButtonTapped() {

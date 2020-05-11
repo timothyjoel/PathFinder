@@ -14,48 +14,30 @@ import SnapKit
 class HomeView: UIView {
     
     // MARK: - Properties
+    var mainStack = Stack(axis: .vertical, distribution: .fill, alignment: .center)
+    var infoLabel = Label(text: "Set location of two points to check the distance between them", font: .systemFont(ofSize: 17, weight: .semibold), textColor: .white)
+    var mapImage = Image(image: .map)
     
-    var infoLabel = Label(text: "Set location of two points on the map to check the distance between them", font: .systemFont(ofSize: 17, weight: .semibold), textColor: .white)
-    
-    private var mainStack = Stack(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 0)
-    
-    private var stack1 = Stack(axis: .vertical, distribution: .fill, alignment: .leading, spacing: 0)
-    private var location1Label = Label(text: "Location1", font: .systemFont(ofSize: 17, weight: .bold), textColor: .white)
-    var lat1Textfield = SkyTextfield(placeholder: "latitude", mainColor: .white, title: "Latitude")
-    var lon1Textfield = SkyTextfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
-    
-    private var stack2 = Stack(axis: .vertical, distribution: .fill, alignment: .leading, spacing: 0)
-    private var location2Label = Label(text: "Location2", font: .systemFont(ofSize: 17, weight: .bold), textColor: .white)
-    var lat2Textfield = SkyTextfield(placeholder: "latitude", mainColor: .white, title: "Latitude")
+    private var parametersStack = Stack(axis: .horizontal, distribution: .fill, alignment: .center)
+    private var location1Stack = Stack(axis: .vertical, distribution: .fill, alignment: .leading)
+    var lat1Textfield = SkyTextfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
+    var lon1Textfield = SkyTextfield(placeholder: "longitude..", mainColor: .white, title: "Longitude")
+    private var location2Stack = Stack(axis: .vertical, distribution: .fill, alignment: .leading)
+    var lat2Textfield = SkyTextfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
     var lon2Textfield = SkyTextfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
     
     var resultLabel = Label(text: "Result", font: .systemFont(ofSize: 17, weight: .regular), textColor: .white)
     
-    var getDistanceButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Get distance", for: .normal)
-        button.setTitleColor(.systemGreen, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        button.backgroundColor = .systemTeal
-        return button
+    var getDistanceButton = ActionButton(title: "Get distance".uppercased())
+    var mapView: MKMapView = {
+        let map = MKMapView()
+        map.layer.cornerRadius = 16
+        return map
     }()
     
-//    lazy var startStopButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Start Navigation", for: .normal)
-//        button.setTitleColor(.systemBlue, for: .normal)
-//        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
-//    //   button.addTarget(self, action: #selector(startStopButtonTapped), for: .touchUpInside)
-//        return button
-//    }()
-//
-    var mapView = MKMapView()
-    
     // MARK: - Initializers
-    
     init() {
         super.init(frame: .zero)
-      //  backgroundColor = .red
         addViews()
     }
     
@@ -63,57 +45,48 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Layout
     func addViews() {
-        addSubViews(infoLabel, mainStack, resultLabel, getDistanceButton, mapView)
-        mainStack.addArrangedSubviews(stack1, stack2)
-        stack1.addArrangedSubviews(location1Label, lon1Textfield, lat1Textfield)
-        stack2.addArrangedSubviews(location2Label, lon2Textfield, lat2Textfield)
+        addSubviews(mainStack, mapView)
+        mainStack.addArrangedSubviews(infoLabel, mapImage, parametersStack, getDistanceButton, resultLabel)
+        parametersStack.addArrangedSubviews(location1Stack, location2Stack)
+        location1Stack.addArrangedSubviews(lon1Textfield, lat1Textfield)
+        location2Stack.addArrangedSubviews(lon2Textfield, lat2Textfield)
     }
     
     override func updateConstraints() {
-        let offset = 16
-        infoLabel.snp.makeConstraints { (make) in
+        let offset: CGFloat = 16
+        mainStack.spacing = offset
+        mainStack.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(offset)
             make.leading.equalToSuperview().offset(offset)
             make.trailing.equalToSuperview().offset(-offset)
         }
-        mainStack.snp.makeConstraints { (make) in
-            make.top.equalTo(infoLabel.snp.bottom).offset(offset)
-            make.centerX.equalToSuperview()
+        
+        mapImage.snp.makeConstraints { (make) in
+            make.height.width.equalTo(50)
         }
-        [stack1, stack2].forEach { (stack) in
+        
+        parametersStack.spacing = offset
+        [location1Stack, location2Stack].forEach { (stack) in
+            stack.spacing = offset
             stack.arrangedSubviews.forEach { (subview) in
                 subview.snp.makeConstraints { (make) in
                     make.width.equalTo(160)
-               //     make.height.equalTo(50)
                 }
             }
         }
-        
-
         getDistanceButton.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
             make.width.equalTo(200)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(mainStack.snp.bottom).offset(offset)
-        }
-
-        resultLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(getDistanceButton.snp.bottom).offset(offset)
+            make.height.equalTo(50)
         }
 
         mapView.snp.makeConstraints { (make) in
-            make.top.equalTo(resultLabel.snp.bottom).offset(offset)
+            make.top.equalTo(mainStack.snp.bottom).offset(offset)
             make.bottom.leading.trailing.equalToSuperview()
         }
-        mapView.layer.cornerRadius = 16
-        mapView.layer.shadowOffset = CGSize(width: 4, height: 4)
-        mapView.layer.shadowColor = UIColor.black.cgColor
-        mapView.layer.shadowRadius = 4
         
         super.updateConstraints()
     }
-    
     
 }

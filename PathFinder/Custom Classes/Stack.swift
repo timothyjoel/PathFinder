@@ -10,12 +10,11 @@ import UIKit
 
 class Stack: UIStackView {
     
-    init(axis: NSLayoutConstraint.Axis = .vertical, distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .center, spacing: CGFloat = 16) {
+    init(axis: NSLayoutConstraint.Axis = .vertical, distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .center) {
         super.init(frame: .zero)
         self.axis = axis
         self.distribution = distribution
         self.alignment = alignment
-        self.spacing = 16
     }
     
     required init(coder: NSCoder) {
