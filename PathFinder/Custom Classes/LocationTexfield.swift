@@ -8,7 +8,7 @@
 
 import SkyFloatingLabelTextField
 
-class SkyTextfield: SkyFloatingLabelTextField {
+class LocationTexfield: SkyFloatingLabelTextField {
     
     init(placeholder: String = "", mainColor: UIColor = .white, title: String = "") {
         super.init(frame: .zero)
@@ -24,6 +24,7 @@ class SkyTextfield: SkyFloatingLabelTextField {
         self.lineHeight = 1
         self.title = title
         self.selectedTitle = title
+        self.keyboardType = .decimalPad
     }
     
     required init?(coder aDecoder: NSCoder) {

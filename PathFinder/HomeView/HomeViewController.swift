@@ -12,8 +12,11 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
     
+    // MARK: - Properties
     var homeView = HomeView()
+    var homeViewModel = HomeViewModel()
     
+    // MARK: - Lifecycle
     override func loadView() {
         view = homeView
     }
@@ -21,6 +24,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView.getDistanceButton.addTarget(self, action: #selector(getDistanceButtonTapped), for: .touchUpInside)
+        homeView.lon1Textfield.delegate = self
+        homeView.lon2Textfield.delegate = self
+        homeView.lat1Textfield.delegate = self
+        homeView.lat2Textfield.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,8 +35,9 @@ class HomeViewController: UIViewController {
         setGradientBackground(colorTop: hexStringToUIColor(hex: "2e6eff"), colorBottom: hexStringToUIColor(hex: "003dc7"))
     }
     
+    // MARK: - Functions
     @objc func getDistanceButtonTapped() {
-        print("Tapped")
+  //      vm.getDistance(Location(lat: Double(homeView.lat1Textfield.text), lon: Double(homeView.lon1Textfield.text)), Location(lat: 50, lon: 50))
     }
     
     @objc fileprivate func startStopButtonTapped() {
@@ -64,28 +72,8 @@ class HomeViewController: UIViewController {
 
 }
 
-
-extension UIViewController {
-    
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print(textField.text)
     }
 }

@@ -20,11 +20,11 @@ class HomeView: UIView {
     
     private var parametersStack = Stack(axis: .horizontal, distribution: .fill, alignment: .center)
     private var location1Stack = Stack(axis: .vertical, distribution: .fill, alignment: .leading)
-    var lat1Textfield = SkyTextfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
-    var lon1Textfield = SkyTextfield(placeholder: "longitude..", mainColor: .white, title: "Longitude")
+    var lat1Textfield = LocationTexfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
+    var lon1Textfield = LocationTexfield(placeholder: "longitude..", mainColor: .white, title: "Longitude")
     private var location2Stack = Stack(axis: .vertical, distribution: .fill, alignment: .leading)
-    var lat2Textfield = SkyTextfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
-    var lon2Textfield = SkyTextfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
+    var lat2Textfield = LocationTexfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
+    var lon2Textfield = LocationTexfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
     
     var resultLabel = Label(text: "Result", font: .systemFont(ofSize: 17, weight: .regular), textColor: .white)
     
