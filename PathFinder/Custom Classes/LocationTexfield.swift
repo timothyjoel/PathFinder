@@ -64,15 +64,19 @@ extension LocationTexfield {
     func validateInput() {
         let lowerBound: Double = validation == .latitude ? -90.0 : -180.0
         let upperBound: Double = validation == .latitude ? 90.0 : 180.0
-        guard let value = text?.double else {
+        guard self.text != "" else {
             errorMessage = nil
+            return
+        }
+        guard let value = text?.double else {
+            errorMessage = "Incorrect value"
             return
         }
         if value >= lowerBound && value <= upperBound {
             errorMessage = nil
             self.text = String(value.rounded(toPlaces: 4))
         } else {
-            errorMessage = "Wrong value"
+            errorMessage = "Incorrect value"
         }
     }
 
