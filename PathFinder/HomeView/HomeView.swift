@@ -20,11 +20,11 @@ class HomeView: UIView {
     
     private var parametersStack = Stack(axis: .horizontal, alignment: .center)
     private var location1Stack = Stack(axis: .vertical, alignment: .leading)
-    var lat1Textfield = LocationTexfield(.latitude)
-    var lon1Textfield = LocationTexfield(.longitude)
+    var lat1field = LocationTexfield(.latitude)
+    var lon1field = LocationTexfield(.longitude)
     private var location2Stack = Stack(axis: .vertical, alignment: .leading)
-    var lat2Textfield = LocationTexfield(.latitude)
-    var lon2Textfield = LocationTexfield(.longitude)
+    var lat2field = LocationTexfield(.latitude)
+    var lon2field = LocationTexfield(.longitude)
     
     var resultLabel = Label(text: "Result", font: .systemFont(ofSize: 17, weight: .regular), textColor: .white)
     
@@ -50,8 +50,8 @@ class HomeView: UIView {
         addSubviews(mainStack, mapView)
         mainStack.addArrangedSubviews(infoLabel, mapImage, parametersStack, getDistanceButton, resultLabel)
         parametersStack.addArrangedSubviews(location1Stack, location2Stack)
-        location1Stack.addArrangedSubviews(lon1Textfield, lat1Textfield)
-        location2Stack.addArrangedSubviews(lon2Textfield, lat2Textfield)
+        location1Stack.addArrangedSubviews(lon1field, lat1field)
+        location2Stack.addArrangedSubviews(lon2field, lat2field)
     }
     
     override func updateConstraints() {

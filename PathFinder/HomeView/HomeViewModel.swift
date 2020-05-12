@@ -10,20 +10,31 @@ import UIKit
 import CoreLocation
 
 struct Location {
-   let lat: Double
-   let lon: Double
+    var lat: Double?
+    var lon: Double?
+    
+    var isValidLocation: Bool {
+        lat != nil && lon != nil
+    }
 }
 
 class HomeViewModel {
     
-    var location1 = Location(lat: 0, lon: 0)
-    var location2 = Location(lat: 0, lon: 0)
+    var location1 = Location(lat: nil, lon: nil)
+    var location2 = Location(lat: nil, lon: nil)
     
-    func getDistanceBetweenLocations() {
-        let coordinate1 = CLLocation(latitude: location1.lat, longitude: location1.lon)
-        let coordinate2 = CLLocation(latitude: location2.lat, longitude: location2.lon)
+    func getDistanceBetweenLocations() -> String  {
+        guard didProvideValidLocations() else {
+            return "Please fill all the fields"
+        }
+        let coordinate1 = CLLocation(latitude: location1.lat!, longitude: location1.lon!)
+        let coordinate2 = CLLocation(latitude: location2.lat!, longitude: location2.lon!)
         let distance = coordinate1.distance(from: coordinate2)
-        print(distance)
+        return String(distance)
+    }
+    
+    private func didProvideValidLocations() -> Bool {
+        return location1.isValidLocation && location2.isValidLocation
     }
     
 }

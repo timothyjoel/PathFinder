@@ -8,8 +8,14 @@
 
 import SkyFloatingLabelTextField
 
+enum LocationTextfieldMessage {
+    case noMessage, tooHigh, tooLow, incorrectValue
+}
+
 class LocationTexfield: SkyFloatingLabelTextField {
     
+    var message: LocationTextfieldMessage = .noMessage
+    var value: Double?
     var validation: LocationParameter
     
     init(_ validation: LocationParameter) {
@@ -28,13 +34,40 @@ class LocationTexfield: SkyFloatingLabelTextField {
         self.selectedTitleColor = .white
         self.selectedLineHeight = 1
         self.lineHeight = 1
-        self.delegate = self
         self.keyboardType = .decimalPad
+        self.addTarget(self, action: #selector(validateInput), for: .editingDidEnd)
         setMinusButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func validateInput() {
+        let lowerBound: Double = validation == .latitude ? -90.0 : -180.0
+        let upperBound: Double = validation == .latitude ? 90.0 : 180.0
+        guard self.text != "" else {
+            self.value = nil
+            self.errorMessage = nil
+            return
+        }
+        guard let value = text?.double else {
+            self.value = nil
+            self.errorMessage = "Incorrect value"
+            return
+        }
+        
+        if value >= lowerBound {
+            
+        }
+        
+        if value >= lowerBound && value <= upperBound {
+            self.errorMessage = nil
+            self.text = String(value.rounded(toPlaces: 4))
+            self.value = value.rounded(toPlaces: 4)
+        } else {
+            errorMessage = "Incorrect value"
+        }
     }
     
     func setMinusButton() {
@@ -58,34 +91,3 @@ class LocationTexfield: SkyFloatingLabelTextField {
     }
     
 }
-
-extension LocationTexfield {
-    
-    func validateInput() {
-        let lowerBound: Double = validation == .latitude ? -90.0 : -180.0
-        let upperBound: Double = validation == .latitude ? 90.0 : 180.0
-        guard self.text != "" else {
-            errorMessage = nil
-            return
-        }
-        guard let value = text?.double else {
-            errorMessage = "Incorrect value"
-            return
-        }
-        if value >= lowerBound && value <= upperBound {
-            errorMessage = nil
-            self.text = String(value.rounded(toPlaces: 4))
-        } else {
-            errorMessage = "Incorrect value"
-        }
-    }
-
-}
-
-extension LocationTexfield: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        validateInput()
-    }
-    
-}
-

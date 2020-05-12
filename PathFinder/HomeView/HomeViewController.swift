@@ -10,11 +10,21 @@ import UIKit
 import MapKit
 import CoreLocation
 
+extension HomeViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.viewModel.location1 = Location(lat: homeView.lat1field.value, lon: homeView.lon1field.value)
+        self.viewModel.location2 = Location(lat: homeView.lat2field.value, lon: homeView.lon2field.value)
+        print(viewModel.location1)
+        print(viewModel.location2)
+    }
+}
+
 class HomeViewController: UIViewController {
     
     // MARK: - Properties
     var homeView = HomeView()
-    var homeViewModel = HomeViewModel()
+    var viewModel = HomeViewModel()
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -25,6 +35,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing)))
         homeView.getDistanceButton.addTarget(self, action: #selector(getDistanceButtonTapped), for: .touchUpInside)
+        setDelegates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +45,7 @@ class HomeViewController: UIViewController {
     
     // MARK: - Functions
     @objc func getDistanceButtonTapped() {
-  //      vm.getDistance(Location(lat: Double(homeView.lat1Textfield.text), lon: Double(homeView.lon1Textfield.text)), Location(lat: 50, lon: 50))
+        homeView.resultLabel.text = viewModel.getDistanceBetweenLocations()
     }
     
     @objc fileprivate func startStopButtonTapped() {
@@ -55,6 +66,12 @@ class HomeViewController: UIViewController {
     
     fileprivate func getRouteSteps(route: MKRoute) {
         
+    }
+    
+    func setDelegates() {
+        [homeView.lat1field, homeView.lon1field, homeView.lat2field, homeView.lat1field].forEach { (textfield) in
+            textfield.delegate = self
+        }
     }
     
     func setGradientBackground(colorTop: UIColor, colorBottom: UIColor){
