@@ -16,6 +16,7 @@
 		815EAE31246A974500D290EA /* Ext-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE30246A974500D290EA /* Ext-String.swift */; };
 		815EAE33246A9CDD00D290EA /* LocationTextfieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE32246A9CDD00D290EA /* LocationTextfieldTests.swift */; };
 		815EAE35246AA66E00D290EA /* Ext-Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE34246AA66E00D290EA /* Ext-Double.swift */; };
+		815EAE37246AB5CB00D290EA /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE36246AB5CB00D290EA /* Validator.swift */; };
 		81778A322469A88200C01340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A312469A88200C01340 /* AppDelegate.swift */; };
 		81778A342469A88200C01340 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A332469A88200C01340 /* SceneDelegate.swift */; };
 		81778A362469A88200C01340 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A352469A88200C01340 /* HomeViewController.swift */; };
@@ -63,6 +64,7 @@
 		815EAE30246A974500D290EA /* Ext-String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-String.swift"; sourceTree = "<group>"; };
 		815EAE32246A9CDD00D290EA /* LocationTextfieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTextfieldTests.swift; sourceTree = "<group>"; };
 		815EAE34246AA66E00D290EA /* Ext-Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-Double.swift"; sourceTree = "<group>"; };
+		815EAE36246AB5CB00D290EA /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		81778A2E2469A88200C01340 /* PathFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81778A312469A88200C01340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81778A332469A88200C01340 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				81778A642469AFDE00C01340 /* LocationTexfield.swift */,
+				815EAE36246AB5CB00D290EA /* Validator.swift */,
 				81778A6D2469B5F700C01340 /* Label.swift */,
 				81778A6F2469B7CA00C01340 /* Stack.swift */,
 				815EAE26246A013800D290EA /* ActionButton.swift */,
@@ -481,6 +484,7 @@
 				815EAE2B246A06F900D290EA /* Image.swift in Sources */,
 				81778A632469AD0E00C01340 /* HomeView.swift in Sources */,
 				815EAE29246A050B00D290EA /* HomeViewModel.swift in Sources */,
+				815EAE37246AB5CB00D290EA /* Validator.swift in Sources */,
 				81778A322469A88200C01340 /* AppDelegate.swift in Sources */,
 				814E738B2469C5BB00EE4028 /* Ext-UIColor.swift in Sources */,
 				81778A342469A88200C01340 /* SceneDelegate.swift in Sources */,
