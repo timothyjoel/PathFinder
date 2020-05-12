@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
     // MARK: - Functions
     @objc func getDistanceButtonTapped() {
         self.view.endEditing(true)
-        homeView.resultLabel.text = viewModel.getDistanceBetweenLocations()
+        homeView.resultLabel.text = viewModel.getDistanceBetweenLocations(in: .kilometers)
     }
     
     @objc fileprivate func startStopButtonTapped() {

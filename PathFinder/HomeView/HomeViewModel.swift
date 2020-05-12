@@ -18,19 +18,28 @@ struct Location {
     }
 }
 
+enum DistanceUnit {
+    case kilometers, meters
+}
+
 class HomeViewModel {
     
     var location1 = Location(lat: nil, lon: nil)
     var location2 = Location(lat: nil, lon: nil)
     
-    func getDistanceBetweenLocations() -> String  {
+    func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
         guard didProvideValidLocations() else {
             return "Please fill all the fields"
         }
+        
         let coordinate1 = CLLocation(latitude: location1.lat!, longitude: location1.lon!)
         let coordinate2 = CLLocation(latitude: location2.lat!, longitude: location2.lon!)
         let distance = coordinate1.distance(from: coordinate2)
-        return String(distance)
+        
+        switch unit {
+            case .kilometers: return String(Double(distance/1000).rounded(toPlaces: 1))
+            case .meters: return String(Double(distance).rounded(toPlaces: 1))
+        }
     }
     
     private func didProvideValidLocations() -> Bool {
