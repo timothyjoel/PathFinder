@@ -30,10 +30,31 @@ class LocationTexfield: SkyFloatingLabelTextField {
         self.lineHeight = 1
         self.delegate = self
         self.keyboardType = .decimalPad
+        setMinusButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setMinusButton() {
+        let minus = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 50))
+        minus.backgroundColor = .systemGray4
+        minus.setTitle("-", for: .normal)
+        minus.setTitleColor(.black, for: .normal)
+        minus.addTarget(self, action: #selector(minusButtonTapped), for: .touchUpInside)
+        inputAccessoryView = minus
+    }
+    
+    @objc func minusButtonTapped() {
+        guard let text = self.text else {
+            return
+        }
+        if text.contains("-") {
+            self.text?.removeFirst()
+        } else {
+            self.text?.insert("-", at: self.text!.startIndex)
+        }
     }
     
 }
