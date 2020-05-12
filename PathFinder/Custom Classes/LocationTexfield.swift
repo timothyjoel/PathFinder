@@ -8,13 +8,8 @@
 
 import SkyFloatingLabelTextField
 
-enum LocationTextfieldMessage {
-    case noMessage, tooHigh, tooLow, incorrectValue
-}
-
 class LocationTexfield: SkyFloatingLabelTextField {
     
-    var message: LocationTextfieldMessage = .noMessage
     var value: Double?
     var validation: LocationParameter
     
@@ -57,17 +52,19 @@ class LocationTexfield: SkyFloatingLabelTextField {
             return
         }
         
-        if value >= lowerBound {
-            
+        if value <= lowerBound {
+            self.errorMessage = "Value is too low"
+            return
         }
         
-        if value >= lowerBound && value <= upperBound {
-            self.errorMessage = nil
-            self.text = String(value.rounded(toPlaces: 4))
-            self.value = value.rounded(toPlaces: 4)
-        } else {
-            errorMessage = "Incorrect value"
+        if value >= upperBound {
+            self.errorMessage = "Value is too high"
+            return
         }
+        
+        self.errorMessage = nil
+        self.text = String(value.rounded(toPlaces: 4))
+        self.value = value.rounded(toPlaces: 4)
     }
     
     func setMinusButton() {
