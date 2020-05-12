@@ -24,10 +24,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView.getDistanceButton.addTarget(self, action: #selector(getDistanceButtonTapped), for: .touchUpInside)
-        homeView.lon1Textfield.delegate = self
-        homeView.lon2Textfield.delegate = self
-        homeView.lat1Textfield.delegate = self
-        homeView.lat2Textfield.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +69,5 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.text)
-    }
+    
 }

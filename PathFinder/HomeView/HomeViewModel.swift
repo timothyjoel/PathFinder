@@ -26,8 +26,4 @@ class HomeViewModel {
         print(distance)
     }
     
-    func validateInputs(_ location: Location) {
-        
-    }
-    
 }

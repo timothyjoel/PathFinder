@@ -18,13 +18,13 @@ class HomeView: UIView {
     var infoLabel = Label(text: "Set location of two points to check the distance between them", font: .systemFont(ofSize: 17, weight: .semibold), textColor: .white)
     var mapImage = Image(image: .map)
     
-    private var parametersStack = Stack(axis: .horizontal, distribution: .fill, alignment: .center)
-    private var location1Stack = Stack(axis: .vertical, distribution: .fill, alignment: .leading)
-    var lat1Textfield = LocationTexfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
-    var lon1Textfield = LocationTexfield(placeholder: "longitude..", mainColor: .white, title: "Longitude")
-    private var location2Stack = Stack(axis: .vertical, distribution: .fill, alignment: .leading)
-    var lat2Textfield = LocationTexfield(placeholder: "latitude...", mainColor: .white, title: "Latitude")
-    var lon2Textfield = LocationTexfield(placeholder: "longitude...", mainColor: .white, title: "Longitude")
+    private var parametersStack = Stack(axis: .horizontal, alignment: .center)
+    private var location1Stack = Stack(axis: .vertical, alignment: .leading)
+    var lat1Textfield = LocationTexfield(.latitude)
+    var lon1Textfield = LocationTexfield(.longitude)
+    private var location2Stack = Stack(axis: .vertical, alignment: .leading)
+    var lat2Textfield = LocationTexfield(.latitude)
+    var lon2Textfield = LocationTexfield(.longitude)
     
     var resultLabel = Label(text: "Result", font: .systemFont(ofSize: 17, weight: .regular), textColor: .white)
     
