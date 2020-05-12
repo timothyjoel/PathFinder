@@ -25,46 +25,44 @@ class LocationTextfieldTests: XCTestCase {
     func testLongitudeValidationTooHighValue() {
         lon.text = "181.0"
         lon.validateInput()
-        XCTAssertEqual(lon.errorMessage, "Incorrect value")
+        XCTAssertEqual(lon.errorMessage, "Value is too high")
     }
     
     func testLongitudeValidationTooLowValue() {
         lon.text = "-181.0"
         lon.validateInput()
-        XCTAssertEqual(lon.errorMessage, "Incorrect value")
+        XCTAssertEqual(lon.errorMessage, "Value is too low")
     }
-//
-//    func testLongitudeValidationInRange() {
-//        longitude.text = "90.0"
-//        XCTAssertTrue(longitude.isValidated())
-//    }
-//
-//    func testLatitudeValidationUpperBound() {
-//        latitude.text = "91.0"
-//        XCTAssertFalse(latitude.isValidated())
-//    }
-//
-//    func testLatitudeValidationLowerBound() {
-//        latitude.text = "-91.0"
-//        XCTAssertFalse(latitude.isValidated())
-//    }
-//
-//    func testLatitudeValidationInRange() {
-//        latitude.text = "45.0"
-//        XCTAssertTrue(latitude.isValidated())
-//    }
-//
-//    func testFormattingValue1() {
-//        latitude.text = "45.08013"
-//        latitude.formatInput()
-//        XCTAssertEqual(latitude.text, "45.0801")
-//    }
-//
-//    func testFormattingValue2() {
-//        latitude.text = "45.08"
-//        latitude.formatInput()
-//        XCTAssertEqual(latitude.text, "45.08")
-//    }
     
+    func testLongitudeValidationValueCorrect() {
+        lon.text = "94"
+        lon.validateInput()
+        XCTAssertEqual(lon.errorMessage, nil)
+    }
+    
+    func testLatitudeValidationTooHighValue() {
+        lat.text = "91.0"
+        lat.validateInput()
+        XCTAssertEqual(lat.errorMessage, "Value is too high")
+    }
+    
+    func testLatitudeValidationTooLowValue() {
+        lat.text = "-91.0"
+        lat.validateInput()
+        XCTAssertEqual(lat.errorMessage, "Value is too low")
+    }
+    
+    func testLatitudeValidationValueCorrect() {
+        lat.text = "65.91029"
+        lat.validateInput()
+        XCTAssertEqual(lat.errorMessage, nil)
+        XCTAssertEqual(lat.text, "65.9103")
+    }
+    
+    func testAddingMinus() {
+        lat.text = "65.0382"
+        lat.minusButtonTapped()
+        XCTAssertEqual(lat.text, "-65.0382")
+    }
 
 }
