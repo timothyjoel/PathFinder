@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
     }
     
     func setDelegates() {
-        [homeView.lat1field, homeView.lon1field, homeView.lat2field, homeView.lat1field].forEach { (textfield) in
+        [homeView.lat1field, homeView.lon1field, homeView.lon2field, homeView.lat2field].forEach { (textfield) in
             textfield.delegate = self
         }
     }
