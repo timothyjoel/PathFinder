@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
     
     // MARK: - Functions
     @objc func getDistanceButtonTapped() {
+        self.view.endEditing(true)
         homeView.resultLabel.text = viewModel.getDistanceBetweenLocations()
     }
     
