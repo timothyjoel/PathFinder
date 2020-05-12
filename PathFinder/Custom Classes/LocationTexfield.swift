@@ -8,22 +8,17 @@
 
 import SkyFloatingLabelTextField
 
-enum LocationParameter {
-    case longitude, latitude
-}
-
 class LocationTexfield: SkyFloatingLabelTextField {
     
-    var parameter: LocationParameter = .longitude
+    var validation: LocationParameter
     
-    init(_ parameter: LocationParameter) {
+    init(_ validation: LocationParameter) {
+        self.validation = validation
         super.init(frame: .zero)
-        self.parameter = parameter
-        self.placeholder = parameter == .latitude ? "Latitude..." : "Longitude..."
-        self.title = parameter  == .latitude ? "Latitude" : "Longitude"
-        self.selectedTitle = parameter  == .latitude ? "Latitude" : "Longitude"
+        self.placeholder = validation == .latitude ? "Latitude..." : "Longitude..."
+        self.title = validation  == .latitude ? "Latitude" : "Longitude"
+        self.selectedTitle = validation  == .latitude ? "Latitude" : "Longitude"
         self.titleColor = .white
-        self.delegate = self
         self.placeholderColor = UIColor.white.withAlphaComponent(0.2)
         self.textColor = .white
         self.placeholder = placeholder
@@ -33,6 +28,7 @@ class LocationTexfield: SkyFloatingLabelTextField {
         self.selectedTitleColor = .white
         self.selectedLineHeight = 1
         self.lineHeight = 1
+        self.delegate = self
         self.keyboardType = .decimalPad
     }
     
@@ -40,52 +36,31 @@ class LocationTexfield: SkyFloatingLabelTextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func isValidated() -> Bool {
-        switch parameter {
-        case .latitude: return validateLatitude()
-        case .longitude: return validateLongitude()
-        }
-    }
+}
+
+extension LocationTexfield {
     
-    func validateLatitude() -> Bool {
-        let value = self.text?.double ?? 0
-        if value <= 90.0 && value >= -90.0 {
-            return true
+    func validateInput() {
+        let lowerBound: Double = validation == .latitude ? -90.0 : -180.0
+        let upperBound: Double = validation == .latitude ? 90.0 : 180.0
+        guard let value = text?.double else {
+            errorMessage = nil
+            return
+        }
+        if value >= lowerBound && value <= upperBound {
+            errorMessage = nil
+            self.text = String(value.rounded(toPlaces: 4))
         } else {
-            return false
+            errorMessage = "Wrong value"
         }
     }
-    
-    func validateLongitude() -> Bool {
-        let value = self.text?.double ?? 0
-        if value <= 180.0 && value >= -180.0 {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func formatInput() {
-        let value = self.text?.double ?? 0
-        if value != 0 {
-           self.text = String(value.rounded(toPlaces: 4))
-        }
-    }
-    
-    func showError() {
-        self.text = ""
-        self.errorMessage = "Wrong value"
-    }
-    
+
 }
 
 extension LocationTexfield: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.isValidated() ? formatInput() : showError()
+        validateInput()
     }
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.errorMessage = nil
-    }
+    
 }
 
