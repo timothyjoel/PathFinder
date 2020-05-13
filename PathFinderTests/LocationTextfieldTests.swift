@@ -41,13 +41,13 @@ class LocationTextfieldTests: XCTestCase {
     }
     
     func testLatitudeValidationTooHighValue() {
-        lat.text = "91.0"
+        lat.text = "90.001"
         lat.validateInput()
         XCTAssertEqual(lat.errorMessage, "Value is too high")
     }
     
     func testLatitudeValidationTooLowValue() {
-        lat.text = "-91.0"
+        lat.text = "-90.001"
         lat.validateInput()
         XCTAssertEqual(lat.errorMessage, "Value is too low")
     }
@@ -63,6 +63,12 @@ class LocationTextfieldTests: XCTestCase {
         lat.text = "65.0382"
         lat.minusButtonTapped()
         XCTAssertEqual(lat.text, "-65.0382")
+    }
+    
+    func testRemovingMinus() {
+        lat.text = "-65.0382"
+        lat.minusButtonTapped()
+        XCTAssertEqual(lat.text, "65.0382")
     }
 
 }
