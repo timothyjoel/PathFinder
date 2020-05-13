@@ -17,10 +17,10 @@ class ActionButton: UIButton {
         titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         backgroundColor = .mainColor
         layer.cornerRadius = 16
-        layer.shadowRadius = 4
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = UIColor.mainColor.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 4)
-        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 6
+        layer.shadowOpacity = 0.7
     }
     
     required init?(coder: NSCoder) {
