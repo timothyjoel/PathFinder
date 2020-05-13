@@ -9,6 +9,23 @@
 import UIKit
 
 extension UIColor {
+    
+    class var flatBlack: UIColor {
+        return UIColor(red: 43, green: 43, blue: 43)
+    }
+    
+    class var background: UIColor {
+        return UIColor(red: 243, green: 243, blue: 248)
+    }
+    
+    class var mainColor: UIColor {
+        return UIColor(red: 83, green: 86, blue: 176)
+    }
+    
+    class var main2Color: UIColor {
+        return UIColor(red: 176, green: 97, blue: 131)
+    }
+    
    convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
        assert(green >= 0 && green <= 255, "Invalid green component")
