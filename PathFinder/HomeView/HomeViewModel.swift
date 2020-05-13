@@ -28,8 +28,8 @@ class HomeViewModel {
     var location2 = Location(lat: nil, lon: nil)
     
     func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
-        guard didProvideValidLocations() else {
-            return "Please fill all the fields"
+        guard checkForDataCorrectness() else {
+            return "-"
         }
         
         let coordinate1 = CLLocation(latitude: location1.lat!, longitude: location1.lon!)
@@ -42,7 +42,15 @@ class HomeViewModel {
         }
     }
     
-    private func didProvideValidLocations() -> Bool {
+    func getResultInfoMessage() -> String {
+       return checkForDataCorrectness() ? "Successfully found the distance" : "Fill in all the fields"
+    }
+    
+    func getResultInfoMessageColor() -> UIColor {
+        return checkForDataCorrectness() ? .systemGreen : .systemRed
+    }
+    
+    private func checkForDataCorrectness() -> Bool {
         return location1.isValidLocation && location2.isValidLocation
     }
     

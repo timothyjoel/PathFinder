@@ -22,7 +22,6 @@ extension HomeViewController: UITextFieldDelegate {
 
 class HomeViewController: UIViewController {
     
-    // MARK: - Properties
     var homeView = HomeView()
     var viewModel = HomeViewModel()
     
@@ -46,7 +45,10 @@ class HomeViewController: UIViewController {
     // MARK: - Functions
     @objc func getDistanceButtonTapped() {
         self.view.endEditing(true)
-        homeView.resultLabel.text = viewModel.getDistanceBetweenLocations(in: .kilometers)
+        homeView.resultInfoLabel.text = viewModel.getResultInfoMessage()
+        homeView.resultInfoLabel.textColor = viewModel.getResultInfoMessageColor()
+        homeView.kmLabel.text = viewModel.getDistanceBetweenLocations(in: .kilometers)
+        homeView.mLabel.text = viewModel.getDistanceBetweenLocations(in: .meters)
     }
     
     @objc fileprivate func startStopButtonTapped() {
