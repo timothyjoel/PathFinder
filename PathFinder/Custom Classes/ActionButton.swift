@@ -12,10 +12,10 @@ class ActionButton: UIButton {
     
     init(title: String) {
         super.init(frame: .zero)
-        setTitle(title, for: .normal)
+        setTitle(title.uppercased(), for: .normal)
         setTitleColor(.white, for: .normal)
         titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        backgroundColor = .main2Color
+        backgroundColor = .mainColor
         layer.cornerRadius = 16
         layer.shadowRadius = 4
         layer.shadowColor = UIColor.black.cgColor
