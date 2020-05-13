@@ -19,7 +19,6 @@ class NominatimURLCreator {
             URLQueryItem(name: "format", value: "jsonv2"),
             URLQueryItem(name: "lat", value: String(coordinates.lat ?? 0.0)),
             URLQueryItem(name: "lon", value: String(coordinates.lon ?? 0.0))]
-        print(components.url!)
         return components.url
     }
     
