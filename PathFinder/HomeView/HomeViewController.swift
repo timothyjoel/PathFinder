@@ -7,21 +7,19 @@
 //
 
 import UIKit
-import MapKit
 import CoreLocation
 
 extension HomeViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.viewModel.location1 = Location(lat: homeView.lat1field.value, lon: homeView.lon1field.value)
-        self.viewModel.location2 = Location(lat: homeView.lat2field.value, lon: homeView.lon2field.value)
-        print(viewModel.location1)
-        print(viewModel.location2)
+        self.viewModel.coordinates1 = Coordinates(lat: homeView.lat1field.value, lon: homeView.lon1field.value)
+        self.viewModel.coordinates2 = Coordinates(lat: homeView.lat2field.value, lon: homeView.lon2field.value)
     }
 }
 
 class HomeViewController: UIViewController {
     
+    var webService = LocationSearchEngine()
     var homeView = HomeView()
     var viewModel = HomeViewModel()
     
@@ -49,6 +47,15 @@ class HomeViewController: UIViewController {
         homeView.resultInfoLabel.textColor = viewModel.getResultInfoMessageColor()
         homeView.kmLabel.text = viewModel.getDistanceBetweenLocations(in: .kilometers)
         homeView.mLabel.text = viewModel.getDistanceBetweenLocations(in: .meters)
+        homeView.startLabel.text = viewModel.fetchedLocation1?.address?.road
+        homeView.destinationLabel.text = viewModel.fetchedLocation1?.address?.road
+        
+        webService.search(viewModel.coordinates1) { (fetchedLocation) in
+            DispatchQueue.main.async {
+                self.homeView.startLabel.text = fetchedLocation.display_name
+                self.homeView.destinationLabel.text = fetchedLocation.display_name
+            }
+        }
     }
     
     @objc fileprivate func startStopButtonTapped() {
@@ -67,9 +74,9 @@ class HomeViewController: UIViewController {
         
     }
     
-    fileprivate func getRouteSteps(route: MKRoute) {
-        
-    }
+//    fileprivate func getRouteSteps(route: MKRoute) {
+//
+//    }
     
     func setDelegates() {
         [homeView.lat1field, homeView.lon1field, homeView.lon2field, homeView.lat2field].forEach { (textfield) in

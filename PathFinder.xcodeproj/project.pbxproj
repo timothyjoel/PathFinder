@@ -17,6 +17,12 @@
 		815EAE33246A9CDD00D290EA /* LocationTextfieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE32246A9CDD00D290EA /* LocationTextfieldTests.swift */; };
 		815EAE35246AA66E00D290EA /* Ext-Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE34246AA66E00D290EA /* Ext-Double.swift */; };
 		815EAE37246AB5CB00D290EA /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE36246AB5CB00D290EA /* Validator.swift */; };
+		815EAE3B246C0DB200D290EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE3A246C0DB200D290EA /* HomeViewModelTests.swift */; };
+		815EAE3E246C129900D290EA /* URLCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE3D246C129900D290EA /* URLCreator.swift */; };
+		815EAE40246C141E00D290EA /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE3F246C141E00D290EA /* DataFetcher.swift */; };
+		815EAE42246C144100D290EA /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE41246C144100D290EA /* DataDecoder.swift */; };
+		815EAE44246C148700D290EA /* LocationSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE43246C148700D290EA /* LocationSearchEngine.swift */; };
+		815EAE46246C1E6D00D290EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE45246C1E6D00D290EA /* Model.swift */; };
 		81778A322469A88200C01340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A312469A88200C01340 /* AppDelegate.swift */; };
 		81778A342469A88200C01340 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A332469A88200C01340 /* SceneDelegate.swift */; };
 		81778A362469A88200C01340 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A352469A88200C01340 /* HomeViewController.swift */; };
@@ -65,6 +71,12 @@
 		815EAE32246A9CDD00D290EA /* LocationTextfieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTextfieldTests.swift; sourceTree = "<group>"; };
 		815EAE34246AA66E00D290EA /* Ext-Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-Double.swift"; sourceTree = "<group>"; };
 		815EAE36246AB5CB00D290EA /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		815EAE3A246C0DB200D290EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		815EAE3D246C129900D290EA /* URLCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCreator.swift; sourceTree = "<group>"; };
+		815EAE3F246C141E00D290EA /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		815EAE41246C144100D290EA /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
+		815EAE43246C148700D290EA /* LocationSearchEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchEngine.swift; sourceTree = "<group>"; };
+		815EAE45246C1E6D00D290EA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		81778A2E2469A88200C01340 /* PathFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81778A312469A88200C01340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81778A332469A88200C01340 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +157,18 @@
 			path = "Custom Classes";
 			sourceTree = "<group>";
 		};
+		815EAE3C246C124D00D290EA /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				815EAE45246C1E6D00D290EA /* Model.swift */,
+				815EAE3D246C129900D290EA /* URLCreator.swift */,
+				815EAE3F246C141E00D290EA /* DataFetcher.swift */,
+				815EAE41246C144100D290EA /* DataDecoder.swift */,
+				815EAE43246C148700D290EA /* LocationSearchEngine.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
 		81778A252469A88200C01340 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +196,7 @@
 			children = (
 				81778A312469A88200C01340 /* AppDelegate.swift */,
 				81778A332469A88200C01340 /* SceneDelegate.swift */,
+				815EAE3C246C124D00D290EA /* WebService */,
 				814E738C2469CFB000EE4028 /* Custom Classes */,
 				81778A662469B27C00C01340 /* Extensions */,
 				81778A612469ACEA00C01340 /* HomeView */,
@@ -187,6 +212,7 @@
 			children = (
 				81778A482469A88500C01340 /* PathFinderTests.swift */,
 				815EAE32246A9CDD00D290EA /* LocationTextfieldTests.swift */,
+				815EAE3A246C0DB200D290EA /* HomeViewModelTests.swift */,
 				81778A4A2469A88500C01340 /* Info.plist */,
 			);
 			path = PathFinderTests;
@@ -472,7 +498,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815EAE42246C144100D290EA /* DataDecoder.swift in Sources */,
 				815EAE31246A974500D290EA /* Ext-String.swift in Sources */,
+				815EAE44246C148700D290EA /* LocationSearchEngine.swift in Sources */,
 				815EAE2D246A0CA800D290EA /* Ext-ViewController.swift in Sources */,
 				81778A682469B28B00C01340 /* Ext-UIView.swift in Sources */,
 				81778A702469B7CA00C01340 /* Stack.swift in Sources */,
@@ -487,7 +515,10 @@
 				815EAE37246AB5CB00D290EA /* Validator.swift in Sources */,
 				81778A322469A88200C01340 /* AppDelegate.swift in Sources */,
 				814E738B2469C5BB00EE4028 /* Ext-UIColor.swift in Sources */,
+				815EAE3E246C129900D290EA /* URLCreator.swift in Sources */,
 				81778A342469A88200C01340 /* SceneDelegate.swift in Sources */,
+				815EAE46246C1E6D00D290EA /* Model.swift in Sources */,
+				815EAE40246C141E00D290EA /* DataFetcher.swift in Sources */,
 				81778A652469AFDE00C01340 /* LocationTexfield.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +529,7 @@
 			files = (
 				815EAE33246A9CDD00D290EA /* LocationTextfieldTests.swift in Sources */,
 				81778A492469A88500C01340 /* PathFinderTests.swift in Sources */,
+				815EAE3B246C0DB200D290EA /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

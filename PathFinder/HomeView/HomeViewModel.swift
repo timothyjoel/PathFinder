@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-struct Location {
+struct Coordinates {
     var lat: Double?
     var lon: Double?
     
@@ -24,17 +24,18 @@ enum DistanceUnit {
 
 class HomeViewModel {
     
-    var location1 = Location(lat: nil, lon: nil)
-    var location2 = Location(lat: nil, lon: nil)
+    var coordinates1 = Coordinates(lat: nil, lon: nil)
+    var coordinates2 = Coordinates(lat: nil, lon: nil)
+    var fetchedLocation1: FetchedLocation?
     
     func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
         guard checkForDataCorrectness() else {
             return "-"
         }
         
-        let coordinate1 = CLLocation(latitude: location1.lat!, longitude: location1.lon!)
-        let coordinate2 = CLLocation(latitude: location2.lat!, longitude: location2.lon!)
-        let distance = coordinate1.distance(from: coordinate2)
+        let location1 = CLLocation(latitude: coordinates1.lat!, longitude: coordinates1.lon!)
+        let location2 = CLLocation(latitude: coordinates2.lat!, longitude: coordinates2.lon!)
+        let distance = location1.distance(from: location2)
         
         switch unit {
             case .kilometers: return String(Double(distance/1000).rounded(toPlaces: 1))
@@ -50,8 +51,8 @@ class HomeViewModel {
         return checkForDataCorrectness() ? .systemGreen : .systemRed
     }
     
-    private func checkForDataCorrectness() -> Bool {
-        return location1.isValidLocation && location2.isValidLocation
+    func checkForDataCorrectness() -> Bool {
+        return coordinates1.isValidLocation && coordinates2.isValidLocation
     }
     
 }
