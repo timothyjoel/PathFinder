@@ -52,12 +52,12 @@ class LocationTexfield: SkyFloatingLabelTextField {
             return
         }
         
-        if value <= lowerBound {
+        if value < lowerBound {
             self.errorMessage = "Value is too low"
             return
         }
         
-        if value >= upperBound {
+        if value > upperBound {
             self.errorMessage = "Value is too high"
             return
         }
