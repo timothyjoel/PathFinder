@@ -19,14 +19,14 @@ class LocationTexfield: SkyFloatingLabelTextField {
         self.placeholder = validation == .latitude ? "Latitude..." : "Longitude..."
         self.title = validation  == .latitude ? "Latitude" : "Longitude"
         self.selectedTitle = validation  == .latitude ? "Latitude" : "Longitude"
-        self.titleColor = .white
-        self.placeholderColor = UIColor.white.withAlphaComponent(0.2)
-        self.textColor = .white
+        self.titleColor = .flatBlack
+        self.placeholderColor = UIColor.main2Color.withAlphaComponent(0.2)
+        self.textColor = .flatBlack
         self.placeholder = placeholder
-        self.errorColor = .systemRed
-        self.lineColor = .white
-        self.selectedLineColor = .white
-        self.selectedTitleColor = .white
+        self.errorColor = .main2Color
+        self.lineColor = .flatBlack
+        self.selectedLineColor = .flatBlack
+        self.selectedTitleColor = .flatBlack
         self.selectedLineHeight = 1
         self.lineHeight = 1
         self.keyboardType = .decimalPad
