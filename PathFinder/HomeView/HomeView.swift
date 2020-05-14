@@ -34,7 +34,7 @@ class HomeView: UIView {
     var kmLabel = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
     private var mStaticLabel = Label(text: "Distance in m:", font: .systemFont(ofSize: 14, weight: .bold))
     var mLabel = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
-    private var startStaticLabel = Label(text: "Location 2:", font: .systemFont(ofSize: 14, weight: .bold))
+    private var startStaticLabel = Label(text: "Location 1:", font: .systemFont(ofSize: 14, weight: .bold))
     var startLabel = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
     private var destinationStaticLabel = Label(text: "Location 2:", font: .systemFont(ofSize: 14, weight: .bold))
     var destinationLabel = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
@@ -68,11 +68,11 @@ class HomeView: UIView {
         }
         resultsStack.spacing = 4
         resultsStack.isLayoutMarginsRelativeArrangement = true
-        resultsStack.layoutMargins = UIEdgeInsets(top: -8, left: 0, bottom: 0, right: 0)
+        resultsStack.layoutMargins = UIEdgeInsets(top: -4, left: 0, bottom: 0, right: 0)
     }
     
     override func updateConstraints() {
-        let offset: CGFloat = 16
+        let offset: CGFloat = 12
         
         mainStack.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(offset)
@@ -82,7 +82,7 @@ class HomeView: UIView {
         
         [location1Stack, location2Stack].forEach { (stack) in
             stack.isLayoutMarginsRelativeArrangement = true
-            stack.layoutMargins = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+            stack.layoutMargins = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
         }
         
         [location1Header, location2Header, resultsHeader].forEach { (header) in
