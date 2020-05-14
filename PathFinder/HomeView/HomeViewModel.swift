@@ -24,9 +24,9 @@ enum DistanceUnit {
 
 class HomeViewModel {
     
+    var locationSearchEngine = LocationSearchEngine()
     var coordinates1 = Coordinates(lat: nil, lon: nil)
     var coordinates2 = Coordinates(lat: nil, lon: nil)
-    var fetchedLocation1: FetchedLocation?
     
     func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
         guard checkForDataCorrectness() else {
@@ -53,6 +53,15 @@ class HomeViewModel {
     
     func checkForDataCorrectness() -> Bool {
         return coordinates1.isValidLocation && coordinates2.isValidLocation
+    }
+    
+    func getLocationFor(_ coordinates: Coordinates, completion: @escaping (String) -> Void) {
+        guard checkForDataCorrectness() else {
+            return completion("-")
+        }
+        locationSearchEngine.search(coordinates) { (fetchedLocation) in
+            return completion(fetchedLocation.display_name ?? "Unknown location")
+        }
     }
     
 }

@@ -18,8 +18,7 @@ extension HomeViewController: UITextFieldDelegate {
 }
 
 class HomeViewController: UIViewController {
-    
-    var webService = LocationSearchEngine()
+   
     var homeView = HomeView()
     var viewModel = HomeViewModel()
     
@@ -35,11 +34,6 @@ class HomeViewController: UIViewController {
         setDelegates()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        setGradientBackground(colorTop: hexStringToUIColor(hex: "2e6eff"), colorBottom: hexStringToUIColor(hex: "003dc7"))
-    }
-    
     // MARK: - Functions
     @objc func getDistanceButtonTapped() {
         self.view.endEditing(true)
@@ -47,51 +41,23 @@ class HomeViewController: UIViewController {
         homeView.resultInfoLabel.textColor = viewModel.getResultInfoMessageColor()
         homeView.kmLabel.text = viewModel.getDistanceBetweenLocations(in: .kilometers)
         homeView.mLabel.text = viewModel.getDistanceBetweenLocations(in: .meters)
-        homeView.startLabel.text = viewModel.fetchedLocation1?.address?.road
-        homeView.destinationLabel.text = viewModel.fetchedLocation1?.address?.road
-        
-        webService.search(viewModel.coordinates1) { (fetchedLocation) in
+        viewModel.getLocationFor(viewModel.coordinates1) { (location) in
             DispatchQueue.main.async {
-                self.homeView.startLabel.text = fetchedLocation.display_name
-                self.homeView.destinationLabel.text = fetchedLocation.display_name
+                self.homeView.startLabel.text = location
+            }
+            
+        }
+        viewModel.getLocationFor(viewModel.coordinates2) { (location) in
+            DispatchQueue.main.async {
+                self.homeView.destinationLabel.text = location
             }
         }
     }
-    
-    @objc fileprivate func startStopButtonTapped() {
-        
-    }
-    
-    fileprivate func centerViewToUserLocation(center: CLLocationCoordinate2D) {
-        
-    }
-    
-    fileprivate func handleAuthorizationStatus(locationManager: CLLocationManager, status: CLAuthorizationStatus) {
-        
-    }
-    
-    fileprivate func mapRoute(destinationCoordinate: CLLocationCoordinate2D) {
-        
-    }
-    
-//    fileprivate func getRouteSteps(route: MKRoute) {
-//
-//    }
     
     func setDelegates() {
         [homeView.lat1field, homeView.lon1field, homeView.lon2field, homeView.lat2field].forEach { (textfield) in
             textfield.delegate = self
         }
-    }
-    
-    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor){
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.locations = [0, 1]
-        gradientLayer.frame = homeView.bounds
-        homeView.layer.insertSublayer(gradientLayer, at: 0)
     }
 
 }
