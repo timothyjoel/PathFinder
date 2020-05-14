@@ -22,26 +22,26 @@ class HomeViewModelTests: XCTestCase {
     }
 
     func testLocationIncorrect() {
-        vm.location1 = Location(lat: nil, lon: nil)
-        vm.location2 = Location(lat: 4, lon: nil)
+        vm.coordinates1 = Coordinates(lat: nil, lon: nil)
+        vm.coordinates2 = Coordinates(lat: 4, lon: nil)
         XCTAssertFalse(vm.checkForDataCorrectness())
     }
     
     func testLocationCorrect() {
-        vm.location1 = Location(lat: 50.0, lon: 10.0)
-        vm.location2 = Location(lat: 40.2, lon: 42.0)
+        vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
+        vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
         XCTAssertTrue(vm.checkForDataCorrectness())
     }
     
     func testGetDistanceMeters() {
-        vm.location1 = Location(lat: 50.0, lon: 10.0)
-        vm.location2 = Location(lat: 40.2, lon: 42.0)
+        vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
+        vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
         XCTAssertEqual(vm.getDistanceBetweenLocations(in: .meters), "2717391.6")
     }
     
     func testGetDistanceKm() {
-        vm.location1 = Location(lat: 50.0, lon: 10.0)
-        vm.location2 = Location(lat: 40.2, lon: 42.0)
+        vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
+        vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
         XCTAssertEqual(vm.getDistanceBetweenLocations(in: .kilometers), "2717.4")
     }
 
