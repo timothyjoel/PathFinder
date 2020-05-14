@@ -8,6 +8,10 @@
 
 import SkyFloatingLabelTextField
 
+enum LocationParameter {
+    case longitude, latitude
+}
+
 class LocationTexfield: SkyFloatingLabelTextField {
     
     var value: Double?
