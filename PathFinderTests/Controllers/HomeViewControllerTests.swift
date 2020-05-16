@@ -47,6 +47,23 @@ class HomeViewControllerTests: XCTestCase {
         
     }
     
+    func test_WhenUserTapsGetDistanceButtonWithValidCoordinates_LoadLocation() {
+        sut.viewModel.coordinates1 = Coordinates(lat: 40.0, lon: 40.0)
+        let coordinates = sut.viewModel.coordinates1
+        let expectation = self.expectation(description: "HomeViewController expected response")
+        
+        self.sut.viewModel.getLocationFor(coordinates) { (location) in
+            DispatchQueue.main.async {
+                self.sut.homeView.locaction1Label.text = location
+                XCTAssertEqual(self.sut.homeView.locaction1Label.text, "Otlukbeli, Erzincan, Eastern Anatolia Region, Turkey")
+                expectation.fulfill()
+            }
+        }
+        
+        self.wait(for: [expectation], timeout: 5)
+        
+    }
+    
     func test_WhenFinishedTextEditingWithValidCoordinates_SetCoordinatesValues() {
         
         sut.homeView.lat1field.text = "40.02"
