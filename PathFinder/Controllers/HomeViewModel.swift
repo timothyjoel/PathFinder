@@ -11,7 +11,7 @@ import CoreLocation
 
 class HomeViewModel {
     
-    var locationSearchEngine = LocationWebService()
+    private var locationSearchEngine = LocationWebService()
     var coordinates1 = Coordinates(lat: nil, lon: nil)
     var coordinates2 = Coordinates(lat: nil, lon: nil)
     
@@ -20,7 +20,7 @@ class HomeViewModel {
 extension HomeViewModel {
     
     func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
-        guard checkForDataCorrectness() else {
+        guard isSearchValid() else {
             return "-"
         }
         
@@ -35,14 +35,14 @@ extension HomeViewModel {
     }
     
     func getSearchLocationStatus() -> String {
-        return checkForDataCorrectness() ? SearchLocationStatus.success.message : SearchLocationStatus.failed.message
+        return isSearchValid() ? SearchLocationStatus.correct.message : SearchLocationStatus.incorrect.message
     }
     
     func getSearchLocationStatusColor() -> UIColor {
-        return checkForDataCorrectness() ? .green : .red
+        return isSearchValid() ? SearchLocationStatusColor.correct.color : SearchLocationStatusColor.incorrect.color
     }
     
-    func checkForDataCorrectness() -> Bool {
+    func isSearchValid() -> Bool {
         return coordinates1.isValidLocation && coordinates2.isValidLocation
     }
     
@@ -50,10 +50,8 @@ extension HomeViewModel {
         guard coordinates.isValidLocation else {
             return completion("-")
         }
-        DispatchQueue.main.async {
-            self.locationSearchEngine.search(coordinates) { (fetchedLocation) in
-                return completion(fetchedLocation.display_name ?? "Unknown location")
-            }
+        self.locationSearchEngine.search(coordinates) { (fetchedLocation) in
+            return completion(fetchedLocation.display_name ?? "Unknown location")
         }
     }
     

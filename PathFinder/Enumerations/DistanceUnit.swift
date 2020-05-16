@@ -9,5 +9,6 @@
 import Foundation
 
 enum DistanceUnit {
-    case kilometers, meters
+    case kilometers
+    case meters
 }

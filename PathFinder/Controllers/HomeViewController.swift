@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
                 self.homeView.location2Label.text = location
             }
         }
+        
     }
     
     func setDelegates() {

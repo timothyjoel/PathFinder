@@ -8,43 +8,6 @@
 
 import SkyFloatingLabelTextField
 
-enum CoordinateParameter: String {
-    
-    case longitude = "Longitude"
-    case latitude = "Latitude"
-    
-    var upperLimit: Double {
-        switch self {
-        case .latitude: return 90.0
-        case .longitude: return 180.0
-        }
-    }
-    
-    var lowerLimit: Double {
-        switch self {
-        case .latitude: return -90.0
-        case .longitude: return -180.0
-        }
-    }
-    
-}
-
-enum CoordinateTextfieldError: String {
-    
-    case valueIsTooHigh
-    case valueIsTooLow
-    case valueIsInvalid
-    
-    var message: String? {
-        switch self {
-        case .valueIsTooHigh: return "Value is too high"
-        case .valueIsTooLow: return "Value is too low"
-        case .valueIsInvalid: return "Invalid value"
-        }
-    }
-    
-}
-
 class CoordinateTextfield: SkyFloatingLabelTextField {
     
     let coordinateParameter: CoordinateParameter
@@ -72,7 +35,7 @@ class CoordinateTextfield: SkyFloatingLabelTextField {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 }
 

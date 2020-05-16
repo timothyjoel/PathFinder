@@ -16,8 +16,8 @@ enum Image {
     func getImage(_ size: UIImage.SymbolScale) -> UIImage {
         let configuration = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
         switch self {
-        case .location: return UIImage(systemName: "location", withConfiguration: configuration) ?? UIImage()
-        case .results: return UIImage(systemName: "magnifyingglass", withConfiguration: configuration) ?? UIImage()
+        case .location: return UIImage(systemName: "location", withConfiguration: configuration)!
+        case .results: return UIImage(systemName: "magnifyingglass", withConfiguration: configuration)!
         }
     }
 }

@@ -6,17 +6,31 @@
 //  Copyright © 2020 Timothy Stokarski. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum SearchLocationStatus {
 
-    case failed
-    case success
+    case incorrect
+    case correct
     
     var message: String {
         switch self {
-        case .failed: return "Fill in all the fields"
-        case .success: return "Successfully found locations"
+        case .incorrect: return "Fill in all correct coordinates"
+        case .correct: return "Coordinates filled correctly"
+        }
+    }
+    
+}
+
+enum SearchLocationStatusColor {
+    
+    case correct
+    case incorrect
+    
+    var color: UIColor {
+        switch self {
+        case .incorrect: return UIColor.red
+        case .correct: return UIColor.green
         }
     }
     

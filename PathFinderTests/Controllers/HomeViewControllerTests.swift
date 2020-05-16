@@ -13,30 +13,39 @@ class HomeViewControllerTests: XCTestCase {
     
     var sut: HomeViewController!
     var view: HomeView!
-    var vm: HomeViewModel!
 
     override func setUp() {
         sut = HomeViewController()
-        view = HomeView()
-        vm = HomeViewModel()
-        sut.view = view
+        self.sut.loadView()
+        self.sut.viewDidLoad()
     }
 
     override func tearDown() {
         sut = nil
-        view = nil
-    }
-
-    func test_WhenUserTapsGetDistanceButtonWithoutCoordinates_ShowFailStatus() {
-        sut.getDistanceButtonTapped()
-        XCTAssertEqual(vm.getSearchLocationStatus(), SearchLocationStatus.failed.message)
     }
     
-    func test_WhenUserTapsGetDistanceButtonWithCoordinates_ShowSucccessStatus() {
-        vm.coordinates1 = Coordinates(lat: 40.0, lon: 40.0)
-        vm.coordinates2 = Coordinates(lat: 46.0, lon: 49.0)
-        sut.getDistanceButtonTapped()
-        XCTAssertEqual(vm.getSearchLocationStatus(), SearchLocationStatus.success.message)
+    func test_WhenUserTapsGetDistanceButtonWithCoordinates_ShowDistanceAndStatusCorrect() {
+        
+        sut.viewModel.coordinates1 = Coordinates(lat: 40.0, lon: 40.0)
+        sut.viewModel.coordinates2 = Coordinates(lat: 46.0, lon: 45.0)
+        
+        self.sut.getDistanceButtonTapped()
+        XCTAssertEqual(self.sut.homeView.resultsStatusLabel.text, SearchLocationStatus.correct.message)
+        XCTAssertEqual(self.sut.homeView.kmLabel.text, "781.0")
+        XCTAssertEqual(self.sut.homeView.mLabel.text, "780975.6")
+        
+    }
+    
+    func test_WhenUserTapsGetDistanceButtonWithoutCoordinates_DontShowDistanceAndShowStatusIncorrect() {
+        
+        sut.viewModel.coordinates1 = Coordinates(lat: 40.0, lon: 40.0)
+        sut.viewModel.coordinates2 = Coordinates(lat: 46.0, lon: nil)
+        
+        self.sut.getDistanceButtonTapped()
+        XCTAssertEqual(self.sut.homeView.resultsStatusLabel.text, SearchLocationStatus.incorrect.message)
+        XCTAssertEqual(self.sut.homeView.kmLabel.text, "-")
+        XCTAssertEqual(self.sut.homeView.mLabel.text, "-")
+        
     }
 
 }
