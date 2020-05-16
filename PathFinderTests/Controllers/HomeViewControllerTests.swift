@@ -16,8 +16,7 @@ class HomeViewControllerTests: XCTestCase {
 
     override func setUp() {
         sut = HomeViewController()
-        self.sut.loadView()
-        self.sut.viewDidLoad()
+        self.sut.loadViewIfNeeded()
     }
 
     override func tearDown() {
