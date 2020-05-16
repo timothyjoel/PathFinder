@@ -47,5 +47,62 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(self.sut.homeView.mLabel.text, "-")
         
     }
+    
+    func test_WhenFinishedTextEditingWithValidCoordinates_SetCoordinatesValues() {
+        
+        sut.homeView.lat1field.text = "40.02"
+        sut.homeView.lon1field.text = "50.04"
+        sut.homeView.lat2field.text = "63.02"
+        sut.homeView.lon2field.text = "44.04"
+        sut.homeView.lat1field.validateInput()
+        sut.homeView.lon1field.validateInput()
+        sut.homeView.lat2field.validateInput()
+        sut.homeView.lon2field.validateInput()
+        sut.textFieldDidEndEditing(UITextField())
+        
+        XCTAssertEqual(sut.viewModel.coordinates1.lat, 40.02)
+        XCTAssertEqual(sut.viewModel.coordinates1.lon, 50.04)
+        XCTAssertEqual(sut.viewModel.coordinates2.lat, 63.02)
+        XCTAssertEqual(sut.viewModel.coordinates2.lon, 44.04)
+        
+    }
+    
+    func test_WhenFinishedTextEditingWithNoCoordinates_SetNilValues() {
+        
+        sut.homeView.lat1field.text = ""
+        sut.homeView.lon1field.text = ""
+        sut.homeView.lat2field.text = ""
+        sut.homeView.lon2field.text = ""
+        sut.homeView.lat1field.validateInput()
+        sut.homeView.lon1field.validateInput()
+        sut.homeView.lat2field.validateInput()
+        sut.homeView.lon2field.validateInput()
+        sut.textFieldDidEndEditing(UITextField())
+        
+        XCTAssertEqual(sut.viewModel.coordinates1.lat, nil)
+        XCTAssertEqual(sut.viewModel.coordinates1.lon, nil)
+        XCTAssertEqual(sut.viewModel.coordinates2.lat, nil)
+        XCTAssertEqual(sut.viewModel.coordinates2.lon, nil)
+        
+    }
+    
+    func test_WhenFinishedTextEditingWithInvalidCoordinates_SetNilValues() {
+        
+        sut.homeView.lat1field.text = "10000"
+        sut.homeView.lon1field.text = "-.."
+        sut.homeView.lat2field.text = "190.21"
+        sut.homeView.lon2field.text = "921.0"
+        sut.homeView.lat1field.validateInput()
+        sut.homeView.lon1field.validateInput()
+        sut.homeView.lat2field.validateInput()
+        sut.homeView.lon2field.validateInput()
+        sut.textFieldDidEndEditing(UITextField())
+        
+        XCTAssertEqual(sut.viewModel.coordinates1.lat, nil)
+        XCTAssertEqual(sut.viewModel.coordinates1.lon, nil)
+        XCTAssertEqual(sut.viewModel.coordinates2.lat, nil)
+        XCTAssertEqual(sut.viewModel.coordinates2.lon, nil)
+        
+    }
 
 }
