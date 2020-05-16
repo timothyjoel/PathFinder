@@ -15,7 +15,7 @@ enum SearchLocationStatus {
     
     var message: String {
         switch self {
-        case .incorrect: return "Fill in all correct coordinates"
+        case .incorrect: return "Fill in all coordinates"
         case .correct: return "Coordinates filled correctly"
         }
     }
@@ -29,8 +29,8 @@ enum SearchLocationStatusColor {
     
     var color: UIColor {
         switch self {
-        case .incorrect: return UIColor.red
-        case .correct: return UIColor.green
+        case .incorrect: return UIColor.systemRed
+        case .correct: return UIColor.systemGreen
         }
     }
     
