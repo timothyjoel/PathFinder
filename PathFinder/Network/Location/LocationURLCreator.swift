@@ -1,5 +1,5 @@
 //
-//  APIMaker.swift
+//  LocationURLCreator.swift
 //  PathFinder
 //
 //  Created by Timothy Stokarski on 13/05/2020.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class NominatimURLCreator {
+class LocationURLCreator {
     
-    func createURL(_ coordinates: Coordinates) -> URL? {
+    func createURL(for coordinates: Coordinates) -> URL {
         var components      = URLComponents()
         components.scheme   = "https"
         components.host     = "nominatim.openstreetmap.org"
@@ -19,7 +19,7 @@ class NominatimURLCreator {
             URLQueryItem(name: "format", value: "jsonv2"),
             URLQueryItem(name: "lat", value: String(coordinates.lat ?? 0.0)),
             URLQueryItem(name: "lon", value: String(coordinates.lon ?? 0.0))]
-        return components.url
+        return components.url!
     }
     
 }

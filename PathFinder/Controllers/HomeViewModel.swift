@@ -9,24 +9,15 @@
 import UIKit
 import CoreLocation
 
-struct Coordinates {
-    var lat: Double?
-    var lon: Double?
-    
-    var isValidLocation: Bool {
-        lat != nil && lon != nil
-    }
-}
-
-enum DistanceUnit {
-    case kilometers, meters
-}
-
 class HomeViewModel {
     
-    var locationSearchEngine = LocationSearchEngine()
+    var locationSearchEngine = LocationWebService()
     var coordinates1 = Coordinates(lat: nil, lon: nil)
     var coordinates2 = Coordinates(lat: nil, lon: nil)
+    
+}
+    
+extension HomeViewModel {
     
     func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
         guard checkForDataCorrectness() else {
@@ -43,12 +34,12 @@ class HomeViewModel {
         }
     }
     
-    func getResultInfoMessage() -> String {
-       return checkForDataCorrectness() ? "Successfully found the distance" : "Fill in all the fields"
+    func getSearchLocationStatus() -> String {
+        return checkForDataCorrectness() ? SearchLocationStatus.success.message : SearchLocationStatus.failed.message
     }
     
-    func getResultInfoMessageColor() -> UIColor {
-        return checkForDataCorrectness() ? .systemGreen : .systemRed
+    func getSearchLocationStatusColor() -> UIColor {
+        return checkForDataCorrectness() ? .green : .red
     }
     
     func checkForDataCorrectness() -> Bool {
@@ -56,11 +47,13 @@ class HomeViewModel {
     }
     
     func getLocationFor(_ coordinates: Coordinates, completion: @escaping (String) -> Void) {
-        guard checkForDataCorrectness() else {
+        guard coordinates.isValidLocation else {
             return completion("-")
         }
-        locationSearchEngine.search(coordinates) { (fetchedLocation) in
-            return completion(fetchedLocation.display_name ?? "Unknown location")
+        DispatchQueue.main.async {
+            self.locationSearchEngine.search(coordinates) { (fetchedLocation) in
+                return completion(fetchedLocation.display_name ?? "Unknown location")
+            }
         }
     }
     

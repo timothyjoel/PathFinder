@@ -7,15 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
-
-extension HomeViewController: UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.viewModel.coordinates1 = Coordinates(lat: homeView.lat1field.value, lon: homeView.lon1field.value)
-        self.viewModel.coordinates2 = Coordinates(lat: homeView.lat2field.value, lon: homeView.lon2field.value)
-    }
-}
 
 class HomeViewController: UIViewController {
    
@@ -37,19 +28,19 @@ class HomeViewController: UIViewController {
     // MARK: - Functions
     @objc func getDistanceButtonTapped() {
         self.view.endEditing(true)
-        homeView.resultInfoLabel.text = viewModel.getResultInfoMessage()
-        homeView.resultInfoLabel.textColor = viewModel.getResultInfoMessageColor()
+        homeView.resultsStatusLabel.text = viewModel.getSearchLocationStatus()
+        homeView.resultsStatusLabel.textColor = viewModel.getSearchLocationStatusColor()
         homeView.kmLabel.text = viewModel.getDistanceBetweenLocations(in: .kilometers)
         homeView.mLabel.text = viewModel.getDistanceBetweenLocations(in: .meters)
         viewModel.getLocationFor(viewModel.coordinates1) { (location) in
             DispatchQueue.main.async {
-                self.homeView.startLabel.text = location
+                self.homeView.locaction1Label.text = location
             }
             
         }
         viewModel.getLocationFor(viewModel.coordinates2) { (location) in
             DispatchQueue.main.async {
-                self.homeView.destinationLabel.text = location
+                self.homeView.location2Label.text = location
             }
         }
     }
@@ -60,4 +51,13 @@ class HomeViewController: UIViewController {
         }
     }
 
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.viewModel.coordinates1 = Coordinates(lat: homeView.lat1field.coordinateValue, lon: homeView.lon1field.coordinateValue)
+        self.viewModel.coordinates2 = Coordinates(lat: homeView.lat2field.coordinateValue, lon: homeView.lon2field.coordinateValue)
+    }
+    
 }

@@ -9,10 +9,14 @@
 import UIKit
 
 class DataDecoder {
+    
     func decode<T: Decodable>(_ data: Data, completion: (T) -> Void) {
         do {
             let decodedData = try JSONDecoder().decode(T.self, from: data)
             completion(decodedData)
-        } catch { debugPrint(error) }
+        } catch {
+            debugPrint(error)
+        }
     }
+    
 }
