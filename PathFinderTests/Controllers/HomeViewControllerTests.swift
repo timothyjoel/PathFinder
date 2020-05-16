@@ -54,8 +54,8 @@ class HomeViewControllerTests: XCTestCase {
         
         self.sut.viewModel.getLocationFor(coordinates) { (location) in
             DispatchQueue.main.async {
-                self.sut.homeView.locaction1Label.text = location
-                XCTAssertEqual(self.sut.homeView.locaction1Label.text, "Otlukbeli, Erzincan, Eastern Anatolia Region, Turkey")
+                self.sut.homeView.location1Label.text = location
+                XCTAssertEqual(self.sut.homeView.location1Label.text, "Otlukbeli, Erzincan, Eastern Anatolia Region, Turkey")
                 expectation.fulfill()
             }
         }
