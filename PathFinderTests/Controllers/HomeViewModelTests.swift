@@ -104,13 +104,13 @@ class HomeViewModelTests: XCTestCase {
     func test_WhenCoordinatesAreCorrect_SetSearchStatusColorToGreen() {
         vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
         vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertEqual(vm.getSearchLocationStatusColor(), .green)
+        XCTAssertEqual(vm.getSearchLocationStatusColor(), SearchLocationStatusColor.correct.color)
     }
     
     func test_WhenCoordinatesAreIncorrect_SetSearchStatusColorToRed() {
         vm.coordinates1 = Coordinates(lat: 50.0, lon: nil)
         vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertEqual(vm.getSearchLocationStatusColor(), .red)
+        XCTAssertEqual(vm.getSearchLocationStatusColor(), SearchLocationStatusColor.incorrect.color)
     }
 
 }
