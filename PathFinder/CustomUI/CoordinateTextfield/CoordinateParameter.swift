@@ -8,10 +8,17 @@
 
 import Foundation
 
-enum CoordinateParameter: String {
+enum CoordinateParameter {
     
-    case longitude = "Longitude"
-    case latitude = "Latitude"
+    case longitude
+    case latitude
+    
+    var name: String {
+        switch self {
+        case .latitude: return "Latitude"
+        case .longitude: return "Longitude"
+        }
+    }
     
     var upperLimit: Double {
         switch self {

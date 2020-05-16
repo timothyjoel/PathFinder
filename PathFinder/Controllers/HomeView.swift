@@ -6,8 +6,6 @@
 //  Copyright © 2020 Timothy Stokarski. All rights reserved.
 //
 
-import UIKit
-import MapKit
 import SkyFloatingLabelTextField
 import SnapKit
 
@@ -38,7 +36,7 @@ class HomeView: UIView {
     var mLabel = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
     
     private var location1StaticLabel = Label(text: "Location 1:", font: .systemFont(ofSize: 14, weight: .bold))
-    var locaction1Label = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
+    var location1Label = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
     
     private var location2StaticLabel = Label(text: "Location 2:", font: .systemFont(ofSize: 14, weight: .bold))
     var location2Label = Label(text: "-", font: .systemFont(ofSize: 14, weight: .regular))
@@ -50,6 +48,7 @@ class HomeView: UIView {
         super.init(frame: .zero)
         backgroundColor = .background
         addViews()
+        setAccessibilityIdentifiers()
     }
     
     required init?(coder: NSCoder) {
@@ -58,17 +57,14 @@ class HomeView: UIView {
     
     // MARK: - Layout
     func addViews() {
-        
         addSubviews(mainStack, getDistanceButton)
         mainStack.addArrangedSubviews(coordinates1Header, coordinates1Stack, coordinates2Header, coordinates2Stack, resultsHeader, resultsStatusLabel, resultsStack)
         coordinates1Stack.addArrangedSubviews(lat1field, lon1field)
         coordinates2Stack.addArrangedSubviews(lat2field, lon2field)
-        resultsStack.addArrangedSubviews(kmStaticLabel, kmLabel, mStaticLabel, mLabel, location1StaticLabel, locaction1Label, location2StaticLabel, location2Label)
-        
+        resultsStack.addArrangedSubviews(kmStaticLabel, kmLabel, mStaticLabel, mLabel, location1StaticLabel, location1Label, location2StaticLabel, location2Label)
     }
     
-    func setSpacings() {
-        
+    private func setSpacings() {
         let spacing: CGFloat = 24
         [mainStack, coordinates1Stack, coordinates2Stack].forEach { (stack) in
             stack.spacing = spacing
@@ -76,11 +72,9 @@ class HomeView: UIView {
         resultsStack.spacing = 4
         resultsStack.isLayoutMarginsRelativeArrangement = true
         resultsStack.layoutMargins = UIEdgeInsets(top: -4, left: 0, bottom: 0, right: 0)
-        
     }
     
     override func updateConstraints() {
-        
         let offset: CGFloat = 12
         
         mainStack.snp.makeConstraints { (make) in
@@ -115,8 +109,20 @@ class HomeView: UIView {
         }
         
         setSpacings()
-        
         super.updateConstraints()
+    }
+    
+    func setAccessibilityIdentifiers() {
+        lat1field.accessibilityIdentifier = "lat1field"
+        lat2field.accessibilityIdentifier = "lat2field"
+        lon1field.accessibilityIdentifier = "lon1field"
+        lon2field.accessibilityIdentifier = "lon2field"
+        resultsStatusLabel.accessibilityIdentifier = "resultsStatusLabel"
+        mLabel.accessibilityIdentifier = "mLabel"
+        kmLabel.accessibilityIdentifier = "kmLabel"
+        location1Label.accessibilityIdentifier = "location1Label"
+        location2Label.accessibilityIdentifier = "location2Label"
+        getDistanceButton.accessibilityIdentifier = "getDistanceButton"
         
     }
     

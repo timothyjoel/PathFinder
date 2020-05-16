@@ -20,4 +20,5 @@ enum Image {
         case .results: return UIImage(systemName: "magnifyingglass", withConfiguration: configuration)!
         }
     }
+    
 }

@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         homeView.mLabel.text = viewModel.getDistanceBetweenLocations(in: .meters)
         viewModel.getLocationFor(viewModel.coordinates1) { (location) in
             DispatchQueue.main.async {
-                self.homeView.locaction1Label.text = location
+                self.homeView.location1Label.text = location
             }
             
         }

@@ -35,4 +35,5 @@ class IconView: UIView {
             make.center.equalToSuperview()
         }
     }
+    
 }

@@ -16,9 +16,9 @@ class CoordinateTextfield: SkyFloatingLabelTextField {
     init(_ coordinateParameter: CoordinateParameter) {
         self.coordinateParameter = coordinateParameter
         super.init(frame: .zero)
-        self.placeholder = coordinateParameter.rawValue + "..."
-        self.title = coordinateParameter.rawValue
-        self.selectedTitle = coordinateParameter.rawValue
+        self.placeholder = coordinateParameter.name + "..."
+        self.title = coordinateParameter.name
+        self.selectedTitle = coordinateParameter.name
         self.titleColor = .flatBlack
         self.placeholderColor = UIColor.main2Color.withAlphaComponent(0.2)
         self.textColor = .flatBlack
@@ -41,6 +41,7 @@ class CoordinateTextfield: SkyFloatingLabelTextField {
 
 extension CoordinateTextfield {
     
+    // MARK: - Selectors
     @objc func minusButtonTapped() {
         if let text = self.text {
             if text.contains("-") {

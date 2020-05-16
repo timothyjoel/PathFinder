@@ -22,4 +22,5 @@ class Label: UILabel {
     required init?(coder aDecoder: NSCoder) {
         return nil
     }
+    
 }
