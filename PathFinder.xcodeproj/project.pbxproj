@@ -35,6 +35,7 @@
 		8166FB86246F6D14006D4695 /* HeaderViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB85246F6D14006D4695 /* HeaderViewTests.swift */; };
 		8166FB88246FE3E7006D4695 /* CoordinateParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB87246FE3E7006D4695 /* CoordinateParameter.swift */; };
 		8166FB8A246FE41D006D4695 /* CoordinateTextfieldError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB89246FE41D006D4695 /* CoordinateTextfieldError.swift */; };
+		8166FB8E247014E8006D4695 /* Ext-HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB8D247014E8006D4695 /* Ext-HTTPResponse.swift */; };
 		81778A322469A88200C01340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A312469A88200C01340 /* AppDelegate.swift */; };
 		81778A342469A88200C01340 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A332469A88200C01340 /* SceneDelegate.swift */; };
 		81778A362469A88200C01340 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81778A352469A88200C01340 /* HomeViewController.swift */; };
@@ -100,6 +101,7 @@
 		8166FB85246F6D14006D4695 /* HeaderViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewTests.swift; sourceTree = "<group>"; };
 		8166FB87246FE3E7006D4695 /* CoordinateParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateParameter.swift; sourceTree = "<group>"; };
 		8166FB89246FE41D006D4695 /* CoordinateTextfieldError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateTextfieldError.swift; sourceTree = "<group>"; };
+		8166FB8D247014E8006D4695 /* Ext-HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-HTTPResponse.swift"; sourceTree = "<group>"; };
 		81778A2E2469A88200C01340 /* PathFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81778A312469A88200C01340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81778A332469A88200C01340 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +275,26 @@
 			path = HeaderView;
 			sourceTree = "<group>";
 		};
+		8166FB8F247014ED006D4695 /* Ext-Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				8166FB8D247014E8006D4695 /* Ext-HTTPResponse.swift */,
+				815EAE34246AA66E00D290EA /* Ext-Double.swift */,
+				815EAE30246A974500D290EA /* Ext-String.swift */,
+			);
+			path = "Ext-Foundation";
+			sourceTree = "<group>";
+		};
+		8166FB9024701500006D4695 /* Ext-UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				81778A672469B28B00C01340 /* Ext-UIView.swift */,
+				81778A692469B3A200C01340 /* Ext-UIStackView.swift */,
+				814E738A2469C5BB00EE4028 /* Ext-UIColor.swift */,
+			);
+			path = "Ext-UIKit";
+			sourceTree = "<group>";
+		};
 		81778A252469A88200C01340 = {
 			isa = PBXGroup;
 			children = (
@@ -346,11 +368,8 @@
 		81778A662469B27C00C01340 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				81778A672469B28B00C01340 /* Ext-UIView.swift */,
-				81778A692469B3A200C01340 /* Ext-UIStackView.swift */,
-				814E738A2469C5BB00EE4028 /* Ext-UIColor.swift */,
-				815EAE30246A974500D290EA /* Ext-String.swift */,
-				815EAE34246AA66E00D290EA /* Ext-Double.swift */,
+				8166FB9024701500006D4695 /* Ext-UIKit */,
+				8166FB8F247014ED006D4695 /* Ext-Foundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -609,6 +628,7 @@
 				815EAE31246A974500D290EA /* Ext-String.swift in Sources */,
 				815EAE44246C148700D290EA /* LocationWebService.swift in Sources */,
 				81778A682469B28B00C01340 /* Ext-UIView.swift in Sources */,
+				8166FB8E247014E8006D4695 /* Ext-HTTPResponse.swift in Sources */,
 				8166FB88246FE3E7006D4695 /* CoordinateParameter.swift in Sources */,
 				81778A702469B7CA00C01340 /* Stack.swift in Sources */,
 				815EAE35246AA66E00D290EA /* Ext-Double.swift in Sources */,
