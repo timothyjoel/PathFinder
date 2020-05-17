@@ -11,7 +11,6 @@
 		814E738B2469C5BB00EE4028 /* Ext-UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814E738A2469C5BB00EE4028 /* Ext-UIColor.swift */; };
 		815EAE27246A013800D290EA /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE26246A013800D290EA /* ActionButton.swift */; };
 		815EAE29246A050B00D290EA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE28246A050B00D290EA /* HomeViewModel.swift */; };
-		815EAE2B246A06F900D290EA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE2A246A06F900D290EA /* Image.swift */; };
 		815EAE31246A974500D290EA /* Ext-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE30246A974500D290EA /* Ext-String.swift */; };
 		815EAE33246A9CDD00D290EA /* LongitudeTextfieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE32246A9CDD00D290EA /* LongitudeTextfieldTests.swift */; };
 		815EAE35246AA66E00D290EA /* Ext-Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815EAE34246AA66E00D290EA /* Ext-Double.swift */; };
@@ -27,8 +26,6 @@
 		8166FB6B246EC0F3006D4695 /* LocationWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB6A246EC0F3006D4695 /* LocationWebServiceTests.swift */; };
 		8166FB72246ECD2D006D4695 /* LocationURLCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB71246ECD2D006D4695 /* LocationURLCreatorTests.swift */; };
 		8166FB78246EDB2D006D4695 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB77246EDB2D006D4695 /* Coordinates.swift */; };
-		8166FB7A246EDB69006D4695 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB79246EDB68006D4695 /* DistanceUnit.swift */; };
-		8166FB7C246EDBA9006D4695 /* SearchLocationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB7B246EDBA9006D4695 /* SearchLocationStatus.swift */; };
 		8166FB80246F0D3F006D4695 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB7F246F0D3F006D4695 /* HomeViewControllerTests.swift */; };
 		8166FB82246F6B11006D4695 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB81246F6B11006D4695 /* LabelTests.swift */; };
 		8166FB84246F6C45006D4695 /* HomeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166FB83246F6C45006D4695 /* HomeViewTests.swift */; };
@@ -77,7 +74,6 @@
 		814E738A2469C5BB00EE4028 /* Ext-UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-UIColor.swift"; sourceTree = "<group>"; };
 		815EAE26246A013800D290EA /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		815EAE28246A050B00D290EA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		815EAE2A246A06F900D290EA /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		815EAE30246A974500D290EA /* Ext-String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-String.swift"; sourceTree = "<group>"; };
 		815EAE32246A9CDD00D290EA /* LongitudeTextfieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongitudeTextfieldTests.swift; sourceTree = "<group>"; };
 		815EAE34246AA66E00D290EA /* Ext-Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext-Double.swift"; sourceTree = "<group>"; };
@@ -93,8 +89,6 @@
 		8166FB6A246EC0F3006D4695 /* LocationWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWebServiceTests.swift; sourceTree = "<group>"; };
 		8166FB71246ECD2D006D4695 /* LocationURLCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationURLCreatorTests.swift; sourceTree = "<group>"; };
 		8166FB77246EDB2D006D4695 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
-		8166FB79246EDB68006D4695 /* DistanceUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
-		8166FB7B246EDBA9006D4695 /* SearchLocationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationStatus.swift; sourceTree = "<group>"; };
 		8166FB7F246F0D3F006D4695 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		8166FB81246F6B11006D4695 /* LabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTests.swift; sourceTree = "<group>"; };
 		8166FB83246F6C45006D4695 /* HomeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTests.swift; sourceTree = "<group>"; };
@@ -197,16 +191,6 @@
 				8166FB77246EDB2D006D4695 /* Coordinates.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		8166FB6D246ECBBA006D4695 /* Enumerations */ = {
-			isa = PBXGroup;
-			children = (
-				815EAE2A246A06F900D290EA /* Image.swift */,
-				8166FB79246EDB68006D4695 /* DistanceUnit.swift */,
-				8166FB7B246EDBA9006D4695 /* SearchLocationStatus.swift */,
-			);
-			path = Enumerations;
 			sourceTree = "<group>";
 		};
 		8166FB6E246ECBFE006D4695 /* Location */ = {
@@ -325,7 +309,6 @@
 				8166FB6C246EC93F006D4695 /* Models */,
 				815EAE3C246C124D00D290EA /* Network */,
 				814E738C2469CFB000EE4028 /* CustomUI */,
-				8166FB6D246ECBBA006D4695 /* Enumerations */,
 				81778A612469ACEA00C01340 /* Controllers */,
 				81778A662469B27C00C01340 /* Extensions */,
 				81778A3A2469A88500C01340 /* Assets.xcassets */,
@@ -622,7 +605,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8166FB7C246EDBA9006D4695 /* SearchLocationStatus.swift in Sources */,
 				8166FB8A246FE41D006D4695 /* CoordinateTextfieldError.swift in Sources */,
 				815EAE42246C144100D290EA /* DataDecoder.swift in Sources */,
 				815EAE31246A974500D290EA /* Ext-String.swift in Sources */,
@@ -634,11 +616,9 @@
 				815EAE35246AA66E00D290EA /* Ext-Double.swift in Sources */,
 				81778A6E2469B5F700C01340 /* Label.swift in Sources */,
 				815EAE27246A013800D290EA /* ActionButton.swift in Sources */,
-				8166FB7A246EDB69006D4695 /* DistanceUnit.swift in Sources */,
 				81778A362469A88200C01340 /* HomeViewController.swift in Sources */,
 				81778A6A2469B3A200C01340 /* Ext-UIStackView.swift in Sources */,
 				8166FB78246EDB2D006D4695 /* Coordinates.swift in Sources */,
-				815EAE2B246A06F900D290EA /* Image.swift in Sources */,
 				81778A632469AD0E00C01340 /* HomeView.swift in Sources */,
 				815EAE4C246C725600D290EA /* IconView.swift in Sources */,
 				815EAE29246A050B00D290EA /* HomeViewModel.swift in Sources */,

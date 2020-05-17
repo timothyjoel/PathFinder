@@ -12,7 +12,7 @@ import SnapKit
 class HomeView: UIView {
     
     // MARK: - Properties
-    private var mainStack = Stack(axis: .vertical, distribution: .fill)
+    private var mainStack = Stack(axis: .vertical)
     
     private var coordinates1Header = HeaderView(icon: .location, title: "Location 1")
     private var coordinates1Stack = Stack(axis: .horizontal)

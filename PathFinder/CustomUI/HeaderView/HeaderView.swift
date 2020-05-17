@@ -13,7 +13,7 @@ class HeaderView: UIView {
     private var iconView = IconView()
     private var titleLabel = Label(font: .systemFont(ofSize: 16, weight: .bold), textColor: .flatBlack, alignment: .left)
     
-    init(icon: Image, title: String) {
+    init(icon: Icons, title: String) {
         self.iconView.imageView.image = icon.getImage(.small)
         self.titleLabel.text = title
         super.init(frame: .zero)
