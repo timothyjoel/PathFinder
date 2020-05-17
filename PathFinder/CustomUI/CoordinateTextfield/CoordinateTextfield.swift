@@ -56,7 +56,7 @@ extension CoordinateTextfield {
         let minus = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 50))
         minus.backgroundColor = .systemGray4
         minus.setTitle("-", for: .normal)
-        minus.setTitleColor(.black, for: .normal)
+        minus.setTitleColor(.label, for: .normal)
         minus.addTarget(self, action: #selector(minusButtonTapped), for: .touchUpInside)
         inputAccessoryView = minus
     }
