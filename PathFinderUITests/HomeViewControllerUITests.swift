@@ -39,7 +39,7 @@ class HomeViewControllerUITests: XCTestCase {
         XCTAssert(app.staticTexts["mLabel"].exists)
     }
 
-    func test_WhenProvidedValidCoordinatesAndTappingGetDistance_DisplayDistanceAndStatus() {
+    func test_WhenProvidedValidCoordinatesAndTappedGetDistance_DisplayResultsAndStatus() {
        
         let screen = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
 
@@ -75,6 +75,7 @@ class HomeViewControllerUITests: XCTestCase {
         XCTAssertEqual(app.staticTexts["resultsStatusLabel"].label, "Coordinates filled correctly")
         XCTAssertEqual(app.staticTexts["kmLabel"].label, "18210.6")
         XCTAssertEqual(app.staticTexts["mLabel"].label, "18210627.9")
+        XCTAssertTrue(app.staticTexts["82F, Klwatka Królewska, gmina Gózd, Radom County, Masovian Voivodeship, 26-634, Poland"].waitForExistence(timeout: 5))
     }
 
     func testLaunchPerformance() {
