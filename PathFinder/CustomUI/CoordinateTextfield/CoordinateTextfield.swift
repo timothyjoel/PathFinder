@@ -1,5 +1,5 @@
 //
-//  LocationTextfield.swift
+//  CoordinateTextfield.swift
 //  PathFinder
 //
 //  Created by Timothy Stokarski on 11/05/2020.

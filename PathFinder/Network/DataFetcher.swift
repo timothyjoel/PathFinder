@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  DataFetcher.swift
 //  PathFinder
 //
 //  Created by Timothy Stokarski on 13/05/2020.
