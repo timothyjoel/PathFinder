@@ -117,7 +117,7 @@ class HomeView: UIView {
         lat2field.accessibilityIdentifier = "lat2field"
         lon1field.accessibilityIdentifier = "lon1field"
         lon2field.accessibilityIdentifier = "lon2field"
-        statusLabel.accessibilityIdentifier = "resultsStatusLabel"
+        statusLabel.accessibilityIdentifier = "statusLabel"
         mLabel.accessibilityIdentifier = "mLabel"
         kmLabel.accessibilityIdentifier = "kmLabel"
         location1Label.accessibilityIdentifier = "location1Label"

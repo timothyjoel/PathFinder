@@ -32,7 +32,7 @@ class HomeViewControllerUITests: XCTestCase {
         XCTAssert(app.textFields["lat2field"].exists)
         XCTAssert(app.textFields["lon1field"].exists)
         XCTAssert(app.textFields["lon2field"].exists)
-        XCTAssert(app.staticTexts["resultsStatusLabel"].exists)
+        XCTAssert(app.staticTexts["statusLabel"].exists)
         XCTAssert(app.staticTexts["location1Label"].exists)
         XCTAssert(app.staticTexts["location2Label"].exists)
         XCTAssert(app.staticTexts["kmLabel"].exists)
@@ -72,7 +72,7 @@ class HomeViewControllerUITests: XCTestCase {
         screen.tap()
         app.buttons["GET DISTANCE"].tap()
 
-        XCTAssertEqual(app.staticTexts["resultsStatusLabel"].label, "Coordinates filled correctly")
+        XCTAssertEqual(app.staticTexts["statusLabel"].label, "Coordinates filled correctly")
         XCTAssertEqual(app.staticTexts["kmLabel"].label, "18210.6")
         XCTAssertEqual(app.staticTexts["mLabel"].label, "18210627.9")
         XCTAssertTrue(app.staticTexts["82F, Klwatka Królewska, gmina Gózd, Radom County, Masovian Voivodeship, 26-634, Poland"].waitForExistence(timeout: 5))

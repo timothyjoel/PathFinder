@@ -29,7 +29,7 @@ class HomeViewControllerTests: XCTestCase {
         sut.viewModel.coordinates2 = Coordinates(lat: 46.0, lon: 45.0)
         
         self.sut.getDistanceButtonTapped()
-        XCTAssertEqual(self.sut.homeView.resultsStatusLabel.text, SearchLocationStatus.correct.message)
+        XCTAssertEqual(self.sut.homeView.statusLabel.text, SearchLocationStatus.correct.message)
         XCTAssertEqual(self.sut.homeView.kmLabel.text, "781.0")
         XCTAssertEqual(self.sut.homeView.mLabel.text, "780975.6")
         
@@ -41,7 +41,7 @@ class HomeViewControllerTests: XCTestCase {
         sut.viewModel.coordinates2 = Coordinates(lat: 46.0, lon: nil)
         
         self.sut.getDistanceButtonTapped()
-        XCTAssertEqual(self.sut.homeView.resultsStatusLabel.text, SearchLocationStatus.incorrect.message)
+        XCTAssertEqual(self.sut.homeView.statusLabel.text, SearchLocationStatus.incorrect.message)
         XCTAssertEqual(self.sut.homeView.kmLabel.text, "-")
         XCTAssertEqual(self.sut.homeView.mLabel.text, "-")
         
