@@ -25,7 +25,7 @@ class HomeView: UIView {
     var lon2field = CoordinateTextfield(.longitude)
     
     var resultsHeader = HeaderView(icon: .results, title: "Results")
-    var resultsStatusLabel = Label(text: "Fill in all the fields", font: .systemFont(ofSize: 14, weight: .bold))
+    var statusLabel = Label(text: "Fill in all the fields", font: .systemFont(ofSize: 14, weight: .bold))
     
     private var resultsStack = Stack(axis: .vertical)
     
@@ -58,7 +58,7 @@ class HomeView: UIView {
     // MARK: - Layout
     func addViews() {
         addSubviews(mainStack, getDistanceButton)
-        mainStack.addArrangedSubviews(coordinates1Header, coordinates1Stack, coordinates2Header, coordinates2Stack, resultsHeader, resultsStatusLabel, resultsStack)
+        mainStack.addArrangedSubviews(coordinates1Header, coordinates1Stack, coordinates2Header, coordinates2Stack, resultsHeader, statusLabel, resultsStack)
         coordinates1Stack.addArrangedSubviews(lat1field, lon1field)
         coordinates2Stack.addArrangedSubviews(lat2field, lon2field)
         resultsStack.addArrangedSubviews(kmStaticLabel, kmLabel, mStaticLabel, mLabel, location1StaticLabel, location1Label, location2StaticLabel, location2Label)
@@ -117,7 +117,7 @@ class HomeView: UIView {
         lat2field.accessibilityIdentifier = "lat2field"
         lon1field.accessibilityIdentifier = "lon1field"
         lon2field.accessibilityIdentifier = "lon2field"
-        resultsStatusLabel.accessibilityIdentifier = "resultsStatusLabel"
+        statusLabel.accessibilityIdentifier = "resultsStatusLabel"
         mLabel.accessibilityIdentifier = "mLabel"
         kmLabel.accessibilityIdentifier = "kmLabel"
         location1Label.accessibilityIdentifier = "location1Label"

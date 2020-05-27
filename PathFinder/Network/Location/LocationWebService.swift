@@ -17,8 +17,8 @@ class LocationWebService {
     func search(_ coordinates: Coordinates, completion: @escaping (FetchedLocation) -> Void) {
         let url = urlCreator.createURL(for: coordinates)
         dataFetcher.fetch(from: url) { (data) in
-            self.dataDecoder.decode(data) { (decodedData) in
-                completion(decodedData)
+            self.dataDecoder.decode(data) { (decodedLocation) in
+                    completion(decodedLocation)
             }
         }
     }
