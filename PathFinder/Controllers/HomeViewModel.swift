@@ -19,6 +19,22 @@ class HomeViewModel {
     
 extension HomeViewModel {
     
+    var resultStatus: String {
+        isSearchValid() ? SearchLocationStatus.correct.message : SearchLocationStatus.incorrect.message
+    }
+    
+    var statusColor: UIColor {
+       isSearchValid() ? SearchLocationStatusColor.correct.color : SearchLocationStatusColor.incorrect.color
+    }
+    
+    var distanceInKm: String {
+        getDistanceBetweenLocations(in: .kilometers)
+    }
+    
+    var distanceInM: String {
+        getDistanceBetweenLocations(in: .meters)
+    }
+    
     func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
         guard isSearchValid() else {
             return "-"
@@ -32,14 +48,6 @@ extension HomeViewModel {
             case .kilometers: return String(Double(distance/1000).rounded(toPlaces: 1))
             case .meters: return String(Double(distance).rounded(toPlaces: 1))
         }
-    }
-    
-    func getSearchLocationStatus() -> String {
-        return isSearchValid() ? SearchLocationStatus.correct.message : SearchLocationStatus.incorrect.message
-    }
-    
-    func getSearchLocationStatusColor() -> UIColor {
-        return isSearchValid() ? SearchLocationStatusColor.correct.color : SearchLocationStatusColor.incorrect.color
     }
     
     func isSearchValid() -> Bool {

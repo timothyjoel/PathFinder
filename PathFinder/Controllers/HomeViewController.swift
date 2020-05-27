@@ -28,15 +28,14 @@ class HomeViewController: UIViewController {
     // MARK: - Functions
     @objc func getDistanceButtonTapped() {
         self.view.endEditing(true)
-        homeView.resultsStatusLabel.text = viewModel.getSearchLocationStatus()
-        homeView.resultsStatusLabel.textColor = viewModel.getSearchLocationStatusColor()
-        homeView.kmLabel.text = viewModel.getDistanceBetweenLocations(in: .kilometers)
-        homeView.mLabel.text = viewModel.getDistanceBetweenLocations(in: .meters)
+        homeView.statusLabel.text = viewModel.resultStatus
+        homeView.statusLabel.textColor = viewModel.statusColor
+        homeView.kmLabel.text = viewModel.distanceInKm
+        homeView.mLabel.text = viewModel.distanceInM
         viewModel.getLocationFor(viewModel.coordinates1) { (location) in
             DispatchQueue.main.async {
                 self.homeView.location1Label.text = location
             }
-            
         }
         viewModel.getLocationFor(viewModel.coordinates2) { (location) in
             DispatchQueue.main.async {
