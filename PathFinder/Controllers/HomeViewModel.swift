@@ -20,11 +20,11 @@ class HomeViewModel {
 extension HomeViewModel {
     
     var resultStatus: String {
-        isSearchValid() ? SearchLocationStatus.correct.message : SearchLocationStatus.incorrect.message
+        isSearchValid ? SearchLocationStatus.correct.message : SearchLocationStatus.incorrect.message
     }
     
     var statusColor: UIColor {
-       isSearchValid() ? SearchLocationStatusColor.correct.color : SearchLocationStatusColor.incorrect.color
+       isSearchValid ? SearchLocationStatusColor.correct.color : SearchLocationStatusColor.incorrect.color
     }
     
     var distanceInKm: String {
@@ -35,23 +35,27 @@ extension HomeViewModel {
         getDistanceBetweenLocations(in: .meters)
     }
     
+}
+
+extension HomeViewModel {
+    
+    private var isSearchValid: Bool {
+        coordinates1.isValidLocation && coordinates2.isValidLocation
+    }
+    
     func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
-        guard isSearchValid() else {
-            return "-"
-        }
+        guard isSearchValid else { return "-" }
         
         let location1 = CLLocation(latitude: coordinates1.lat!, longitude: coordinates1.lon!)
         let location2 = CLLocation(latitude: coordinates2.lat!, longitude: coordinates2.lon!)
         let distance = location1.distance(from: location2)
         
         switch unit {
-            case .kilometers: return String(Double(distance/1000).rounded(toPlaces: 1))
-            case .meters: return String(Double(distance).rounded(toPlaces: 1))
+            case .kilometers:
+                return String(Double(distance/1000).rounded(toPlaces: 1))
+            case .meters:
+                return String(Double(distance).rounded(toPlaces: 1))
         }
-    }
-    
-    func isSearchValid() -> Bool {
-        return coordinates1.isValidLocation && coordinates2.isValidLocation
     }
     
     func getLocationFor(_ coordinates: Coordinates, completion: @escaping (String) -> Void) {
@@ -64,7 +68,6 @@ extension HomeViewModel {
     }
     
 }
-
 
 enum SearchLocationStatus {
     
