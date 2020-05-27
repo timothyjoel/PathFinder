@@ -20,18 +20,6 @@ class HomeViewModelTests: XCTestCase {
     override func tearDown() {
         vm = nil
     }
-
-    func test_WhenCoordinatesAreIncorrect_FailDataCorrectnessCheck() {
-        vm.coordinates1 = Coordinates(lat: nil, lon: nil)
-        vm.coordinates2 = Coordinates(lat: 4, lon: nil)
-        XCTAssertFalse(vm.isSearchValid())
-    }
-    
-    func test_WhenCoordinatesAreCorrect_PassDataCorrectnessCheck() {
-        vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
-        vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertTrue(vm.isSearchValid())
-    }
     
     func test_WhenCoordinatesAreCorrect_SetDistanceInMeters() {
         vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
@@ -58,7 +46,6 @@ class HomeViewModelTests: XCTestCase {
         vm.getLocationFor(vm.coordinates1) { (location) in
                 XCTAssertEqual(expectedLocation, location)
         }
-
     }
     
     func test_WhenCoordinatesAreCorrect_LocationSearchReturnLocation() {
@@ -87,30 +74,6 @@ class HomeViewModelTests: XCTestCase {
             }
         }
         self.wait(for: [expectation], timeout: 5)
-    }
-    
-    func test_WhenCoordinatesAreCorrect_SetSearchStatusToSuccess() {
-        vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
-        vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertEqual(vm.getSearchLocationStatus(), SearchLocationStatus.correct.message)
-    }
-    
-    func test_WhenCoordinatesAreIncorrect_SetSearchStatusToFailed() {
-        vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
-        vm.coordinates2 = Coordinates(lat: 40.2, lon: nil)
-        XCTAssertEqual(vm.getSearchLocationStatus(), SearchLocationStatus.incorrect.message)
-    }
-    
-    func test_WhenCoordinatesAreCorrect_SetSearchStatusColorToGreen() {
-        vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
-        vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertEqual(vm.getSearchLocationStatusColor(), SearchLocationStatusColor.correct.color)
-    }
-    
-    func test_WhenCoordinatesAreIncorrect_SetSearchStatusColorToRed() {
-        vm.coordinates1 = Coordinates(lat: 50.0, lon: nil)
-        vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertEqual(vm.getSearchLocationStatusColor(), SearchLocationStatusColor.incorrect.color)
     }
 
 }
