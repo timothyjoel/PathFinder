@@ -43,7 +43,7 @@ extension HomeViewModel {
         coordinates1.isValidLocation && coordinates2.isValidLocation
     }
     
-    func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
+    private func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
         guard isSearchValid else { return "-" }
         
         let location1 = CLLocation(latitude: coordinates1.lat!, longitude: coordinates1.lon!)

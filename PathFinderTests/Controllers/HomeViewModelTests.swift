@@ -24,19 +24,19 @@ class HomeViewModelTests: XCTestCase {
     func test_WhenCoordinatesAreCorrect_SetDistanceInMeters() {
         vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
         vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertEqual(vm.getDistanceBetweenLocations(in: .meters), "2717391.6")
+        XCTAssertEqual(vm.distanceInM, "2717391.6")
     }
     
     func test_WhenCoordinatesAreCorrect_SetDistanceInKilometers() {
         vm.coordinates1 = Coordinates(lat: 50.0, lon: 10.0)
         vm.coordinates2 = Coordinates(lat: 40.2, lon: 42.0)
-        XCTAssertEqual(vm.getDistanceBetweenLocations(in: .kilometers), "2717.4")
+        XCTAssertEqual(vm.distanceInKm, "2717.4")
     }
     
     func test_WhenCoordinatesAreIncorrect_SetDistanceToMinus() {
         vm.coordinates1 = Coordinates(lat: 50.0, lon: nil)
         vm.coordinates2 = Coordinates(lat: nil, lon: 42.0)
-        XCTAssertEqual(vm.getDistanceBetweenLocations(in: .kilometers), "-")
+        XCTAssertEqual(vm.distanceInM, "-")
     }
     
     func test_WhenCoordinatesAreIncorrect_LocationSearchReturnsMinus() {
