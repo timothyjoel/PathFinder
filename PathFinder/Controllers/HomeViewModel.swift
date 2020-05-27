@@ -20,19 +20,27 @@ class HomeViewModel {
 extension HomeViewModel {
     
     var resultStatus: String {
-        isSearchValid ? SearchLocationStatus.correct.message : SearchLocationStatus.incorrect.message
+        get {
+            isSearchValid ? SearchLocationStatus.correct.message : SearchLocationStatus.incorrect.message
+        }
     }
     
     var statusColor: UIColor {
-       isSearchValid ? SearchLocationStatusColor.correct.color : SearchLocationStatusColor.incorrect.color
+        get {
+            isSearchValid ? SearchLocationStatusColor.correct.color : SearchLocationStatusColor.incorrect.color
+        }
     }
     
     var distanceInKm: String {
-        getDistanceBetweenLocations(in: .kilometers)
+        get {
+           getDistanceBetweenLocations(in: .kilometers)
+        }
     }
     
     var distanceInM: String {
-        getDistanceBetweenLocations(in: .meters)
+        get {
+          getDistanceBetweenLocations(in: .meters)
+        }
     }
     
 }
@@ -40,7 +48,9 @@ extension HomeViewModel {
 extension HomeViewModel {
     
     private var isSearchValid: Bool {
-        coordinates1.isValidLocation && coordinates2.isValidLocation
+        get {
+           coordinates1.isValidLocation && coordinates2.isValidLocation
+        }
     }
     
     private func getDistanceBetweenLocations(in unit: DistanceUnit) -> String  {
