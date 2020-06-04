@@ -56,7 +56,7 @@ class HomeView: UIView {
     }
     
     // MARK: - Layout
-    func addViews() {
+    private func addViews() {
         addSubviews(mainStack, getDistanceButton)
         mainStack.addArrangedSubviews(coordinates1Header, coordinates1Stack, coordinates2Header, coordinates2Stack, resultsHeader, statusLabel, resultsStack)
         coordinates1Stack.addArrangedSubviews(lat1field, lon1field)
@@ -112,7 +112,7 @@ class HomeView: UIView {
         super.updateConstraints()
     }
     
-    func setAccessibilityIdentifiers() {
+    private func setAccessibilityIdentifiers() {
         lat1field.accessibilityIdentifier = "lat1field"
         lat2field.accessibilityIdentifier = "lat2field"
         lon1field.accessibilityIdentifier = "lon1field"
@@ -123,7 +123,6 @@ class HomeView: UIView {
         location1Label.accessibilityIdentifier = "location1Label"
         location2Label.accessibilityIdentifier = "location2Label"
         getDistanceButton.accessibilityIdentifier = "getDistanceButton"
-        
     }
     
 }
