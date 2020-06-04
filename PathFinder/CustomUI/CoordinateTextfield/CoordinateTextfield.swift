@@ -52,7 +52,7 @@ extension CoordinateTextfield {
         }
     }
     
-    func setMinusButton() {
+    private func setMinusButton() {
         let minus = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 50))
         minus.backgroundColor = .systemGray4
         minus.setTitle("-", for: .normal)
@@ -67,7 +67,7 @@ extension CoordinateTextfield {
         setFormattedInputText()
     }
     
-    func setCoordinateValue() -> Double? {
+    private func setCoordinateValue() -> Double? {
         guard let val = self.text?.double else {
             return nil
         }
@@ -77,7 +77,7 @@ extension CoordinateTextfield {
         }
     }
     
-    func setErrorMessage() -> String? {
+    private func setErrorMessage() -> String? {
         guard self.text != "" else {
             return nil
         }
@@ -92,7 +92,7 @@ extension CoordinateTextfield {
         }
     }
     
-    func setFormattedInputText() {
+    private func setFormattedInputText() {
         guard let val = self.text?.double else {
             return
         }
