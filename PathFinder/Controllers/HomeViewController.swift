@@ -32,14 +32,14 @@ class HomeViewController: UIViewController {
         homeView.statusLabel.textColor = viewModel.statusColor
         homeView.kmLabel.text = viewModel.distanceInKm
         homeView.mLabel.text = viewModel.distanceInM
-        viewModel.getLocationFor(viewModel.coordinates1) { (location) in
+        viewModel.getLocationFor(viewModel.coordinates1) { [weak self] location in
             DispatchQueue.main.async {
-                self.homeView.location1Label.text = location
+                self?.homeView.location1Label.text = location
             }
         }
-        viewModel.getLocationFor(viewModel.coordinates2) { (location) in
+        viewModel.getLocationFor(viewModel.coordinates2) { [weak self] location in
             DispatchQueue.main.async {
-                self.homeView.location2Label.text = location
+                self?.homeView.location2Label.text = location
             }
         }
         
